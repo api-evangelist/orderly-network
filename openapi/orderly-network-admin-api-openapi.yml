@@ -1,0 +1,80 @@
+openapi: 3.0.1
+info:
+  title: EVM admin API
+  description: ''
+  version: 1.0.0
+servers:
+- url: https://api.orderly.org
+  description: Mainnet
+- url: https://testnet-api.orderly.org
+  description: Testnet
+tags:
+- name: admin
+paths:
+  /v1/admin/points/stage:
+    delete:
+      summary: Delete stage
+      deprecated: false
+      description: '**Limit: 10 requests per 1 second per user per IP address**
+
+
+        `DELETE /v1/admin/points/stage`
+
+
+        Delete a specific stage.
+
+
+        Only callable by Broker Admin.
+
+        '
+      tags:
+      - admin
+      parameters:
+      - name: orderly-timestamp
+        in: header
+        required: true
+        schema:
+          type: string
+      - name: orderly-account-id
+        in: header
+        required: true
+        schema:
+          type: string
+      - name: orderly-key
+        in: header
+        required: true
+        schema:
+          type: string
+      - name: orderly-signature
+        in: header
+        required: true
+        schema:
+          type: string
+      - name: stage_id
+        in: query
+        description: Stage ID to delete
+        required: true
+        schema:
+          type: number
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BasicResponse'
+components:
+  schemas:
+    BasicResponse:
+      required:
+      - success
+      type: object
+      properties:
+        success:
+          description: Indicates whether the request was successful.
+          type: boolean
+          example: true
+        timestamp:
+          description: Server timestamp in milliseconds.
+          type: integer
+          example: 1702989203989

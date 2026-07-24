@@ -1,0 +1,139 @@
+openapi: 3.0.1
+info:
+  title: EVM admin client API
+  description: ''
+  version: 1.0.0
+servers:
+- url: https://api.orderly.org
+  description: Mainnet
+- url: https://testnet-api.orderly.org
+  description: Testnet
+tags:
+- name: client
+paths:
+  /v1/client/points/user_statistics:
+    get:
+      summary: Get user statistics
+      deprecated: false
+      description: '**Limit: 10 requests per 1 second per user per IP address**
+
+
+        `GET /v1/client/points/user_statistics`
+
+
+        Returns daily point statistics for a specific user.
+
+        '
+      tags:
+      - client
+      parameters:
+      - name: orderly-timestamp
+        in: header
+        required: true
+        schema:
+          type: string
+      - name: orderly-account-id
+        in: header
+        required: true
+        schema:
+          type: string
+      - name: orderly-key
+        in: header
+        required: true
+        schema:
+          type: string
+      - name: orderly-signature
+        in: header
+        required: true
+        schema:
+          type: string
+      - name: stage
+        in: query
+        description: Filter by Stage
+        required: true
+        schema:
+          type: number
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GetUserStatisticsResponse'
+components:
+  schemas:
+    BasicResponse:
+      required:
+      - success
+      type: object
+      properties:
+        success:
+          description: Indicates whether the request was successful.
+          type: boolean
+          example: true
+        timestamp:
+          description: Server timestamp in milliseconds.
+          type: integer
+          example: 1702989203989
+    GetUserStatisticsResponse:
+      allOf:
+      - $ref: '#/components/schemas/BasicResponse'
+      - type: object
+        properties:
+          data:
+            type: object
+            properties:
+              stage:
+                type: number
+                example: 1
+              address:
+                type: string
+                example: 0x123...
+              trading_point:
+                type: number
+                example: 50
+              pnl_point:
+                type: number
+                example: 30
+              referral_point:
+                type: number
+                example: 20
+              stage_rank:
+                type: number
+                example: 1
+              stage_points:
+                type: number
+                example: 100
+              weekly_breakdown:
+                type: object
+                properties:
+                  this_week:
+                    type: object
+                    properties:
+                      trading_point:
+                        type: number
+                        example: 50
+                      pnl_point:
+                        type: number
+                        example: 30
+                      referral_point:
+                        type: number
+                        example: 20
+                      rank:
+                        type: number
+                        example: 1
+                  last_week:
+                    type: object
+                    properties:
+                      trading_point:
+                        type: number
+                        example: 50
+                      pnl_point:
+                        type: number
+                        example: 30
+                      referral_point:
+                        type: number
+                        example: 20
+                      rank:
+                        type: number
+                        example: 1
