@@ -1,0 +1,100 @@
+# Orderly Network
+
+> Orderly is an omnichain orderbook-based trading infrastructure providing perpetual futures liquidity for decentralized exchanges.
+
+API Base: `https://api.orderly.org/` (Mainnet), `https://testnet-api.orderly.org` (Testnet). Authentication uses ed25519 signatures. Symbol format: PERP_<TOKEN>_USDC.
+
+## Getting Started
+
+- [What is Orderly?](https://orderly.network/docs/introduction/getting-started/what-is-orderly): Discover what Orderly is, who it is for, and how to get started with the documentation.
+- [Builder Onboarding](https://orderly.network/docs/introduction/getting-started/builder-onboarding): Learn how to become a Builder on Orderly, choose a launch path, set up your builder profile, and move into implementation.
+- [Building on Orderly](https://orderly.network/docs/build-on-omnichain/building-on-omnichain): Start building your dApp on Orderly's omnichain trading infrastructure.
+- [Integration Checklist](https://orderly.network/docs/build-on-omnichain/integration-checklist): A structured guide for builders integrating with Orderly Network.
+
+## Authentication
+
+- [API Authentication](https://orderly.network/docs/build-on-omnichain/api-authentication): Implement secure request signing for the Orderly API using the ed25519 standard.
+- [Wallet Authentication](https://orderly.network/docs/build-on-omnichain/user-flows/wallet-authentication): Authenticate wallets and manage Orderly Keys for secure API access.
+
+## Accounts and Funding
+
+- [Accounts](https://orderly.network/docs/build-on-omnichain/user-flows/accounts): Learn how to register user accounts, manage account states, and map wallets to builders on Orderly.
+- [Deposit/Withdrawal](https://orderly.network/docs/build-on-omnichain/user-flows/withdrawal-deposit): Implement secure cross-chain deposits and withdrawals with step-by-step smart contract and API integration guides.
+
+## Order Lifecycle
+
+- [Order Management](https://orderly.network/docs/build-on-omnichain/user-flows/order-management): How orders flow through Orderly's architecture, from placement to execution and settlement.
+- [Create Order](https://orderly.network/docs/build-on-omnichain/restful-api/private/create-order): [POST /v1/order] Create order
+- [Cancel Order](https://orderly.network/docs/build-on-omnichain/restful-api/private/cancel-order): [DELETE /v1/order] Cancel order
+- [Get Orders](https://orderly.network/docs/build-on-omnichain/restful-api/private/get-orders): [GET /v1/orders] Get orders
+
+## Isolated Margin
+
+- [Isolated Margin](https://orderly.network/docs/build-on-omnichain/user-flows/isolated-margin): Step-by-step guide to integrating Isolated Margin: setting leverage, placing orders, and adjusting position margin.
+- [Isolated Margin](https://orderly.network/docs/introduction/trade-on-orderly/perpetual-futures/isolated-margin): Discover how Isolated Margin mode works on Orderly, including per-position risk isolation.
+- [Update Margin Mode](https://orderly.network/docs/build-on-omnichain/restful-api/private/update-margin-mode): [POST /v1/client/margin_mode] Update margin mode
+- [Get Margin Modes](https://orderly.network/docs/build-on-omnichain/restful-api/private/get-margin-modes): [GET /v1/client/margin_modes] Get margin modes
+- [Add Or Reduce Position Margin](https://orderly.network/docs/build-on-omnichain/restful-api/private/add-or-reduce-position-margin): [POST /v1/position_margin] Add or reduce position margin
+
+## Transfers and Settlement
+
+- [Internal Transfer](https://orderly.network/docs/build-on-omnichain/user-flows/internal-transfer): Discover how to perform internal transfers between accounts and sub-accounts using wallet-signed requests.
+- [Settle PnL](https://orderly.network/docs/build-on-omnichain/user-flows/settle-pnl): Learn how to settle realized and unrealized PnL into USDC balances via the Orderly API.
+- [Create Internal Transfer](https://orderly.network/docs/build-on-omnichain/restful-api/private/create-internal-transfer): [POST /v1/internal_transfer] Create internal transfer
+
+## SDK Setup
+
+- [List of SDKs](https://orderly.network/docs/sdks/overview): Comparison of Orderly SDKs (React components, hooks, core, perp) to help choose the right starting point.
+- [SDK Best Practices](https://orderly.network/docs/sdks/best-practices): Architecture guidelines, integration best practices, and troubleshooting checklists for Orderly SDK developers and AI agents.
+- [Getting started](https://orderly.network/docs/sdks/react/getting_started): Quickly install and configure the Orderly React SDK to build professional trading interfaces.
+- [Setup](https://orderly.network/docs/sdks/hooks/setup): How to install, configure, and connect wallet adapters with the Orderly React hooks SDK.
+
+## WebSocket & Real-Time Data
+
+- [Websocket API](https://orderly.network/docs/build-on-omnichain/websocket-api/introduction): WebSocket API base endpoints, available public and private topics, and subscription/unsubscription format.
+- [Orderbook](https://orderly.network/docs/build-on-omnichain/websocket-api/public/orderbook): Subscribe to full depth-100 orderbook snapshots for a symbol via WebSocket, pushed every second.
+- [Trade](https://orderly.network/docs/build-on-omnichain/websocket-api/public/trade): Subscribe to real-time trade execution events for a symbol via WebSocket.
+- [Execution Report](https://orderly.network/docs/build-on-omnichain/websocket-api/private/execution-report): Subscribe to order execution reports, optionally filtered by symbol, via private WebSocket stream.
+
+## API Reference
+
+- [Introduction](https://orderly.network/docs/build-on-omnichain/introduction): Orderly API overview covering REST and WebSocket endpoints, authentication, and request conventions.
+- [Error Codes](https://orderly.network/docs/build-on-omnichain/error-codes): Complete list of Orderly API error codes with HTTP status codes and descriptions.
+
+## Public Info API
+
+- [Public Info API](https://orderly.network/docs/build-on-omnichain/public-info-api/overview): Zero-auth, single-endpoint query API for AI agents, quant traders, and analytics. POST /v1/public/query with a type field — covers market, account, and platform data.
+- [Market summary](https://orderly.network/docs/build-on-omnichain/public-info-api/market/market-summary): Multi-symbol snapshot of prices, funding, 24h volume, and open interest. Fast path when called with no symbols.
+- [Orderbook](https://orderly.network/docs/build-on-omnichain/public-info-api/market/orderbook): Orderbook snapshot with mid price and spread.
+- [Candles](https://orderly.network/docs/build-on-omnichain/public-info-api/market/candles): OHLCV kline series for a symbol and interval. Paginated by timestamp.
+- [Account state](https://orderly.network/docs/build-on-omnichain/public-info-api/account/account-state): Account snapshot: collateral, open positions, margin metrics, and PnL. Response shape changes based on whether account_id is supplied.
+- [Agent context](https://orderly.network/docs/build-on-omnichain/public-info-api/account/agent-context): Agent startup bundle: account state, open positions, held-symbol market summaries, and open order count in one parallelized call.
+- [Trades](https://orderly.network/docs/build-on-omnichain/public-info-api/account/trades): Trade fills (executed order fills) for an address. Combines a real-time window with an archive window so older history stays queryable.
+- [Top addresses](https://orderly.network/docs/build-on-omnichain/public-info-api/platform/top-addresses): Leaderboard of addresses by notional / volume / PnL / trade count, with multi-window stats.
+- [Platform positions](https://orderly.network/docs/build-on-omnichain/public-info-api/platform/platform-positions): Platform-wide open-position snapshot across all users. Powers liquidation heatmaps and cross-account risk views.
+
+## Chains & Contracts
+
+- [Supported Chains](https://orderly.network/docs/introduction/trade-on-orderly/supported-chains): Explore the list of supported chains on Orderly Network.
+- [Smart Contract Addresses](https://orderly.network/docs/build-on-omnichain/addresses): Smart contract addresses for Orderly vault, USDC, and Verifier on each supported chain (mainnet and testnet).
+
+## Builder Marketplace & Plugins
+
+- [Introduction](https://orderly.network/docs/build-on-omnichain/builder-marketplace/introduction): The Builders Marketplace: install, build, and publish modules and apps on Orderly.
+- [Getting started](https://orderly.network/docs/build-on-omnichain/builder-marketplace/getting-started): Follow this path once per machine or project. Estimated time: 15–20 minutes.
+- [Orderly Plugin Developer Handbook](https://orderly.network/docs/build-on-omnichain/builder-marketplace/plugin-developer-handbook): This handbook explains how to build, integrate, and publish Orderly SDK plugins using the devkit CLI (@orderly.network/devkit), the Orderly SDK Docs MCP serv...
+- [Skills-first workflow (recommended)](https://orderly.network/docs/build-on-omnichain/builder-marketplace/skills-first): This is the recommended way to work with the Orderly SDK for plugin authoring, integration, and Marketplace submission, especially when you use an AI coding ...
+- [Tutorial 1: First plugin from the template](https://orderly.network/docs/build-on-omnichain/builder-marketplace/first-plugin): Goal: Scaffold a plugin and make one visible change on a single interceptor target that exists in the SDK.
+- [Tutorial 2: Integrate a plugin into the host app](https://orderly.network/docs/build-on-omnichain/builder-marketplace/integrate-host): Goal: Load an existing plugin package through OrderlyAppProvider’s plugins prop.
+- [Tutorial 3: Submit a plugin to the Orderly Builders Marketplace](https://orderly.network/docs/build-on-omnichain/builder-marketplace/marketplace-submission): Goal: Authenticate with the devkit, validate a local plugin folder, and submit it for Marketplace review.
+- [Tutorial 4: One plugin, multiple interceptor targets](https://orderly.network/docs/build-on-omnichain/builder-marketplace/multi-interceptor-targets): Register one plugin that intercepts more than one injector target so the same feature can appear in several UI surfaces.
+- [CLI reference (`orderly-devkit`)](https://orderly.network/docs/build-on-omnichain/builder-marketplace/cli-reference): Package: @orderly.network/devkit. Binary: orderly-devkit.
+- [Interceptor targets: runtime vs CLI template](https://orderly.network/docs/build-on-omnichain/builder-marketplace/interceptors): Guide for interceptor targets: runtime vs cli template
+- [Runtime injector targets (handbook reference)](https://orderly.network/docs/build-on-omnichain/builder-marketplace/runtime-injector-targets): Interceptor target strings must match the SDK exactly (case-sensitive).
+- [Manifest and Builders Marketplace submit](https://orderly.network/docs/build-on-omnichain/builder-marketplace/manifest-and-submit): Aligned with @orderly.network/devkit submit, update, and manifest wiring (see the published package for source filenames).
+
+## Troubleshooting
+
+- [Introduction overview](https://orderly.network/docs/troubleshooting/introduction): Starting point for diagnosing integration, account, transaction, and trading issues on Orderly.
+- [Transaction/order issues](https://orderly.network/docs/troubleshooting/user-issues/transaction-failures): How to triage failed transactions and orders by separating on-chain from API-level failures.
+- [Stuck/delayed withdrawals](https://orderly.network/docs/troubleshooting/user-issues/withdrawal-issues): How to diagnose delayed or stuck withdrawals by checking LayerZero messaging and chain status.

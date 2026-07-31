@@ -1,0 +1,35 @@
+generated: '2026-07-20'
+method: searched
+status: published
+source: https://github.com/OrderlyNetwork/orderly-mcp + https://www.npmjs.com/package/@orderly.network/mcp-server
+server:
+  name: orderly
+  official: true
+  package: "@orderly.network/mcp-server"
+  transports:
+    - stdio          # default for local clients
+    - http           # stateless, self-hosted
+  hosted_url: https://mcp.orderly.network
+  install: npx @orderly.network/mcp-server init --client <client>
+  supported_clients: [claude, cursor, vscode, codex, opencode]
+tools:
+  - name: search_orderly_docs
+    description: Search the Orderly documentation.
+  - name: get_sdk_pattern
+    description: Retrieve SDK v2 hooks and component examples.
+  - name: get_contract_addresses
+    description: Look up smart-contract addresses per chain.
+  - name: explain_workflow
+    description: Step-by-step development guides.
+  - name: get_api_info
+    description: REST / WebSocket endpoint documentation.
+  - name: get_indexer_api_info
+    description: Trading metrics and account events (indexer API).
+  - name: get_component_guide
+    description: React component building guidance.
+  - name: get_orderly_one_api_info
+    description: DEX creation and management API (Orderly One).
+  - name: get_strategy_vault_api_info
+    description: Strategy Vault API reference.
+  - name: get_public_info_api_info
+    description: Zero-auth Public Info API for AI agents and analytics.

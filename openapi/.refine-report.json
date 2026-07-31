@@ -1,0 +1,22 @@
+{
+  "provider": "orderly-network",
+  "sources": [
+    "orderly-network-admin-api-openapi.yml",
+    "orderly-network-client-api-openapi.yml",
+    "orderly-network-private-api-openapi.yml",
+    "orderly-network-public-api-openapi.yml"
+  ],
+  "outputs": [
+    "orderly-network-admin-api-openapi.yml",
+    "orderly-network-client-api-openapi.yml",
+    "orderly-network-private-api-openapi.yml",
+    "orderly-network-public-api-openapi.yml"
+  ],
+  "archived": [],
+  "errors": [
+    "orderly-network-private-api-openapi.yml: dangling $ref: #/components/schemas/MetaData"
+  ],
+  "warnings": [],
+  "notes": [],
+  "skipped": []
+}

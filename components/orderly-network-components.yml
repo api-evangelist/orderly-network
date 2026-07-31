@@ -1,0 +1,28 @@
+generated: '2026-07-20'
+method: searched
+source: https://orderly.network/docs/sdks/overview
+docs: https://orderly.network/docs/sdks/react/getting_started
+description: >
+  Orderly ships a client-side React component and hooks SDK for embedding a full
+  perpetual-futures trading UI, plus a Builder Marketplace plugin system that
+  injects features into runtime interceptor targets.
+families:
+  - name: React App / UI components
+    loader: "@orderly.network/react-app"
+    description: Prebuilt trading interface (order entry, orderbook, positions, markets) mounted via OrderlyAppProvider.
+    docs: https://orderly.network/docs/sdks/react/getting_started
+  - name: React hooks
+    loader: "@orderly.network/hooks"
+    description: Headless data/trading hooks to build custom trading surfaces.
+    docs: https://orderly.network/docs/sdks/hooks/setup
+  - name: Builder Marketplace plugins
+    loader: "@orderly.network/devkit"
+    description: >
+      Plugins register against runtime injector/interceptor targets to extend
+      trading-page areas (order entry, chart overlays, data-list tabs, mobile
+      layout) without forking the SDK.
+    docs: https://orderly.network/docs/build-on-omnichain/builder-marketplace/introduction
+templates:
+  - "@orderly.network react Next.js template"
+  - "@orderly.network react Remix template"
+  - "@orderly.network react Vite template"

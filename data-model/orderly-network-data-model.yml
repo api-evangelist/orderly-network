@@ -1,0 +1,79 @@
+generated: '2026-07-20'
+method: derived
+source: openapi/orderly-network-openapi-original.yml + https://orderly.network/docs/build-on-omnichain/introduction
+description: >
+  Entity-relationship graph derived from the Orderly EVM REST OpenAPI schemas
+  and documented account model. Accounts are keyed by account_id (derived from
+  wallet address + broker id); trading is per-symbol in PERP_<TOKEN>_USDC form.
+entities:
+  - name: account
+    key: account_id
+    notes: Main account; derived from wallet address and broker id.
+    relationships:
+      - has_many: sub_account
+        via: account_id
+      - has_many: orderly_key
+        via: account_id
+      - has_many: order
+        via: account_id
+      - has_many: position
+        via: account_id
+      - has_one: holding
+        via: account_id
+  - name: sub_account
+    key: account_id
+    relationships:
+      - belongs_to: account
+        via: main_account_id
+  - name: orderly_key
+    key: orderly_key
+    notes: ed25519 public key registered to an account for API signing.
+    relationships:
+      - belongs_to: account
+        via: account_id
+  - name: order
+    key: order_id
+    notes: Also references client_order_id for client-side reconciliation.
+    relationships:
+      - belongs_to: account
+        via: account_id
+      - belongs_to: symbol
+        via: symbol
+      - has_many: trade
+        via: order_id
+  - name: algo_order
+    key: algo_order_id
+    relationships:
+      - belongs_to: account
+        via: account_id
+      - belongs_to: symbol
+        via: symbol
+  - name: trade
+    key: trade_id
+    relationships:
+      - belongs_to: order
+        via: order_id
+      - belongs_to: symbol
+        via: symbol
+  - name: position
+    key: [account_id, symbol]
+    relationships:
+      - belongs_to: account
+        via: account_id
+      - belongs_to: symbol
+        via: symbol
+  - name: symbol
+    key: symbol
+    notes: PERP_<TOKEN>_USDC market definition (tick/step/leverage config).
+  - name: holding
+    key: account_id
+    notes: Per-token collateral/holding balance for an account.
+    relationships:
+      - belongs_to: account
+        via: account_id
+  - name: asset_transaction
+    key: id
+    notes: Deposits, withdrawals, and internal transfers.
+    relationships:
+      - belongs_to: account
+        via: account_id

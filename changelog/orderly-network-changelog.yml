@@ -1,0 +1,33 @@
+generated: '2026-07-20'
+method: searched
+source: https://github.com/OrderlyNetwork/documentation-public/tree/main/release-notes
+docs: https://orderly.network/docs/release-notes
+scheme:
+  platform: dated release notes (Omnichain platform)
+  sdk: semver (TypeScript SDK)
+  current_sdk_version: 3.1.5
+tracks:
+  - name: omnichain-platform
+    entries:
+      - date: '2026-07-14'
+        highlights:
+          - Conditional maker-rebate eligibility now evaluated per trade based on Builder base maker fee vs user trading fee.
+          - Net Builder revenue formula updated to include base maker fee and referral/referee rebate deductions.
+      - date: '2026-06-30'
+        highlights:
+          - Platform release (testnet + mainnet 2026-06-30 06:00 UTC).
+  - name: typescript-sdk
+    entries:
+      - version: 3.1.5
+        date: '2026-07-14'
+        additions: [ADI chain support]
+      - version: 3.1.4
+        date: '2026-07-10'
+        additions:
+          - Referral remarks/descriptions on direct referrals.
+          - Referral code max length increased to 15 characters.
+      - version: 3.1.3
+        date: '2026-07-07'
+        additions:
+          - New Crypto category across market list experiences.
+          - Expanded Trading-page plugin support (order entry, chart overlays, data-list tabs, mobile layout) without forking the SDK.

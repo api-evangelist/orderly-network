@@ -1,0 +1,31 @@
+generated: '2026-07-20'
+method: probed
+source: live DNS/TLS/HTTP probes of apis.yml + OpenAPI hosts
+hosts:
+- host: orderly.network
+  https: true
+  tls_version: TLSv1.3
+  cert_expires: Sep  5 23:49:34 2026 GMT
+  hsts: false
+- host: api.orderly.org
+  https: true
+  tls_version: TLSv1.3
+  cert_expires: Oct  4 04:21:23 2026 GMT
+  hsts: false
+- host: testnet-api.orderly.org
+  https: true
+  tls_version: TLSv1.3
+  cert_expires: Sep 17 13:19:06 2026 GMT
+  hsts: false
+domains:
+- domain: orderly.network
+  dnssec: false
+  caa: []
+  spf: true
+  dmarc: true
+  dmarc_policy: quarantine
+- domain: orderly.org
+  dnssec: false
+  caa: []
+  spf: false
+  dmarc: false

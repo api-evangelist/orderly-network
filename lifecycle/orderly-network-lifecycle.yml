@@ -1,0 +1,23 @@
+generated: '2026-07-20'
+method: searched
+source: https://github.com/OrderlyNetwork/documentation-public/tree/main/release-notes
+versioning:
+  scheme: uri-path
+  current: v1
+  docs: https://orderly.network/docs/build-on-omnichain/introduction
+release_classification:
+  docs: https://orderly.network/docs/release-notes
+  severities: [patch, minor, major, critical]
+  note: >
+    Orderly publishes a release-classification policy (patch/minor/major/critical)
+    describing breaking-change and user-intervention expectations per severity.
+deprecation:
+  policy_url: null
+  sunset_header: false
+  note: No formal deprecation/Sunset(RFC 8594) header policy located.
+status_page:
+  url: null
+  note: >
+    Homepage reports "All systems operational" but no dedicated public status
+    page (status.orderly.network) was reachable.
+deprecated_operations: []

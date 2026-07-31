@@ -1,0 +1,69 @@
+generated: '2026-07-20'
+method: searched
+source: https://www.npmjs.com/org/orderly.network + https://pypi.org/project/orderly-evm-connector/ + https://crates.io/crates/orderly-connector-rs
+packages:
+  - language: javascript
+    registry: npm
+    name: "@orderly.network/react-app"
+    url: https://www.npmjs.com/package/@orderly.network/react-app
+    install: npm install @orderly.network/react-app
+    description: Full React app scaffolding with Orderly Network trading components.
+    official: true
+  - language: javascript
+    registry: npm
+    name: "@orderly.network/hooks"
+    url: https://www.npmjs.com/package/@orderly.network/hooks
+    install: npm install @orderly.network/hooks
+    description: React hooks SDK for querying and trading against the Orderly API.
+    official: true
+  - language: javascript
+    registry: npm
+    name: "@orderly.network/core"
+    url: https://www.npmjs.com/package/@orderly.network/core
+    install: npm install @orderly.network/core
+    description: Core library (account, signing, transport) underlying the Orderly SDK.
+    official: true
+  - language: javascript
+    registry: npm
+    name: "@orderly.network/perp"
+    url: https://www.npmjs.com/package/@orderly.network/perp
+    install: npm install @orderly.network/perp
+    description: Perpetual-futures math and helpers for the Orderly SDK.
+    official: true
+  - language: javascript
+    registry: npm
+    name: "@orderly.network/orderly-sdk"
+    url: https://www.npmjs.com/package/@orderly.network/orderly-sdk
+    install: npm install @orderly.network/orderly-sdk
+    description: Complete library to interact with Orderly contracts and the API.
+    official: true
+  - language: javascript
+    registry: npm
+    name: "@orderly.network/devkit"
+    url: https://www.npmjs.com/package/@orderly.network/devkit
+    install: npm install -g @orderly.network/devkit
+    description: CLI toolkit for scaffolding and building DEXs, plugins, and modules with Orderly (binary orderly-devkit).
+    official: true
+  - language: javascript
+    registry: npm
+    name: "@orderly.network/mcp-server"
+    url: https://www.npmjs.com/package/@orderly.network/mcp-server
+    install: npx @orderly.network/mcp-server
+    description: MCP server exposing Orderly documentation, SDK patterns, contract addresses, and API reference.
+    official: true
+  - language: python
+    registry: pypi
+    name: orderly-evm-connector
+    url: https://pypi.org/project/orderly-evm-connector/
+    install: pip install orderly-evm-connector
+    description: Lightweight connector to the Orderly REST API and WebSocket (EVM).
+    official: true
+    source_repo: https://github.com/OrderlyNetwork/orderly-evm-connector-python
+  - language: rust
+    registry: crates.io
+    name: orderly-connector-rs
+    url: https://crates.io/crates/orderly-connector-rs
+    install: cargo add orderly-connector-rs
+    description: Rust client library for the Orderly Network API and WebSocket.
+    official: false
+    note: Community-maintained (ranger-finance).

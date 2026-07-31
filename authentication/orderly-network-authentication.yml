@@ -1,0 +1,36 @@
+generated: '2026-07-20'
+method: searched
+source: https://orderly.network/docs/build-on-omnichain/api-authentication
+docs: https://orderly.network/docs/build-on-omnichain/api-authentication
+note: >
+  The OpenAPI does not declare formal securitySchemes; authentication is a
+  custom request-signing scheme documented in the auth guide and captured here.
+summary:
+  types: [signature]
+  scheme: ed25519
+  transport: custom-headers
+  oauth2_flows: []
+schemes:
+  - name: OrderlyKeySignature
+    type: signature
+    algorithm: ed25519
+    encoding: base64url
+    key_format: "ed25519:<base58-public-key>"
+    headers:
+      - orderly-account-id   # registered Orderly account identifier
+      - orderly-key          # public key, ed25519:<base58>
+      - orderly-signature    # base64url ed25519 signature of the normalized request
+      - orderly-timestamp    # request time in milliseconds
+    signing_string: "<timestamp><HTTP-METHOD><path?query><json-body>"
+    validations:
+      timestamp_tolerance_seconds: 300
+      checks: [signature-verification, key-registered-and-not-expired]
+    key_registration: >
+      Orderly Keys are generated and registered via wallet authentication
+      (EIP-712 wallet signature), or supplied by a frontend such as WOOFi Pro.
+    docs: https://orderly.network/docs/build-on-omnichain/user-flows/wallet-authentication
+public_access:
+  description: >
+    Public market-data endpoints and the Public Info API (POST /v1/public/query)
+    require no authentication.
+  docs: https://orderly.network/docs/build-on-omnichain/public-info-api/overview

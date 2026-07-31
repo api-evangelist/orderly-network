@@ -1,0 +1,39 @@
+generated: '2026-07-20'
+method: searched
+source: https://orderly.network/docs/build-on-omnichain/introduction
+docs: https://orderly.network/docs/build-on-omnichain/api-authentication
+authentication:
+  style: ed25519 request signing via orderly-* headers
+  ref: authentication/orderly-network-authentication.yml
+base_urls:
+  mainnet: https://api.orderly.org
+  testnet: https://testnet-api.orderly.org
+versioning:
+  scheme: uri-path
+  current: v1
+  example: /v1/order
+content_type:
+  post_put: application/json
+  get_delete: application/x-www-form-urlencoded
+idempotency:
+  supported: false
+  note: >
+    No Idempotency-Key header. Order-creation endpoints accept an optional
+    client_order_id used for client-side reconciliation and duplicate
+    detection (duplicate submissions surface as error code -1007 / HTTP 409),
+    but this is deduplication, not a general idempotency contract.
+pagination:
+  style: page-number
+  params: [page, size]
+  response_fields: [current_page, records_per_page, total, rows]
+symbol_format: PERP_<TOKEN>_USDC
+error_envelope:
+  fields: [success, code, message, timestamp, data]
+  ref: errors/orderly-network-error-codes.yml
+rate_limits:
+  signaling: HTTP 429 with Orderly code -1003
+  documented: 'Per-endpoint in the REST reference (e.g. "Limit: 10 requests per second").'
+timestamp:
+  header: orderly-timestamp
+  unit: milliseconds
+  tolerance_seconds: 300

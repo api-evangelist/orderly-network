@@ -1,27 +1,157 @@
 aid: orderly-network
 name: Orderly Network
-description: 'Orderly Network is a company surfaced as a portfolio company of pantera-capital and added
-  to the API Evangelist network as a stub for enrichment. Sector: crypto. This profile is a lead awaiting
-  the enrichment pipeline.'
+description: >-
+  Orderly Network is an omnichain, orderbook-based trading infrastructure that
+  provides perpetual-futures liquidity for decentralized exchanges and builders.
+  It exposes a full EVM REST API and WebSocket streams for order management,
+  account and sub-account handling, cross-chain deposits/withdrawals, positions,
+  settlement, and market data, plus a Strategy Vault API and a zero-auth Public
+  Info API aimed at AI agents and analytics. Authentication uses ed25519 request
+  signing with registered Orderly Keys. Builders integrate via React component
+  and hooks SDKs, a devkit CLI, a Builders Marketplace plugin system, and an
+  official MCP server. Markets use the PERP_<TOKEN>_USDC symbol format across a
+  public mainnet and testnet.
 url: https://raw.githubusercontent.com/api-evangelist/orderly-network/refs/heads/main/apis.yml
+accessModel:
+  pricing: unknown
+  onboarding: unknown
+  trial: false
+  try_now: false
+  public: false
+  label: Unknown
+  confidence: low
+  source:
+  - authentication
+  generated: '2026-07-22'
+  method: derived
+image: https://raw.githubusercontent.com/OrderlyNetwork/documentation-public/main/logo/light.svg
 x-type: company
 x-source: vc-portfolio
 x-backed-by:
 - pantera-capital
-x-tier: stub
+x-tier: enriched
 x-tier-reason: portfolio-lead
 specificationVersion: '0.20'
 created: '2026-07-17'
-modified: '2026-07-17'
+modified: '2026-07-20'
 tags:
 - Company
 - Crypto
-apis: []
+- DeFi
+- Trading
+- Perpetual Futures
+- Derivatives
+- Orderbook
+- Web3
+- Blockchain
+- Liquidity
+apis:
+- aid: orderly-network:orderly-network-admin-api
+  name: Orderly Network admin API
+  description: The admin API from Orderly Network — 1 operation(s) for admin.
+  humanURL: https://orderly.network/docs/build-on-omnichain/introduction
+  baseURL: https://api.orderly.org
+  tags:
+  - admin
+  properties:
+  - type: OpenAPI
+    url: openapi/orderly-network-admin-api-openapi.yml
+- aid: orderly-network:orderly-network-client-api
+  name: Orderly Network client API
+  description: The client API from Orderly Network — 1 operation(s) for client.
+  humanURL: https://orderly.network/docs/build-on-omnichain/introduction
+  baseURL: https://api.orderly.org
+  tags:
+  - client
+  properties:
+  - type: OpenAPI
+    url: openapi/orderly-network-client-api-openapi.yml
+- aid: orderly-network:orderly-network-private-api
+  name: Orderly Network private API
+  description: The private API from Orderly Network — 137 operation(s) for private.
+  humanURL: https://orderly.network/docs/build-on-omnichain/introduction
+  baseURL: https://api.orderly.org
+  tags:
+  - private
+  properties:
+  - type: OpenAPI
+    url: openapi/orderly-network-private-api-openapi.yml
+- aid: orderly-network:orderly-network-public-api
+  name: Orderly Network public API
+  description: The public API from Orderly Network — 97 operation(s) for public.
+  humanURL: https://orderly.network/docs/build-on-omnichain/introduction
+  baseURL: https://api.orderly.org
+  tags:
+  - public
+  properties:
+  - type: OpenAPI
+    url: openapi/orderly-network-public-api-openapi.yml
 maintainers:
 - FN: Kin Lane
   email: kin@apievangelist.com
 - FN: APIs.json
   email: info@apis.io
 common:
+- type: DeveloperPortal
+  url: https://orderly.network/docs/sdks/overview
+- type: Documentation
+  url: https://orderly.network/docs/introduction/getting-started/what-is-orderly
+- type: APIReference
+  url: https://orderly.network/docs/build-on-omnichain/introduction
+- type: GettingStarted
+  url: https://orderly.network/docs/introduction/getting-started/builder-onboarding
+- type: Blog
+  url: https://orderly.network/blog
+- type: GitHubOrganization
+  url: https://github.com/OrderlyNetwork
+- type: Support
+  url: https://discord.com/invite/OrderlyNetwork
+- type: TermsOfService
+  url: https://orderly.network/docs/introduction/terms-of-service
+- type: PrivacyPolicy
+  url: https://orderly.network/docs/introduction/privacy-policy
+- type: LLMsTxt
+  url: llms/orderly-network-llms.txt
+- type: Packages
+  url: packages/orderly-network-packages.yml
+- type: SDKs
+  url: packages/orderly-network-packages.yml
+- type: CLI
+  url: cli/orderly-network-cli.yml
+- type: Components
+  url: components/orderly-network-components.yml
+- type: MCPServer
+  url: mcp/orderly-network-mcp.yml
+- type: AgentSkill
+  url: skills/_index.yml
+- type: Authentication
+  url: authentication/orderly-network-authentication.yml
+- type: Conventions
+  url: conventions/orderly-network-conventions.yml
+- type: ErrorCatalog
+  url: errors/orderly-network-error-codes.yml
+- type: DataModel
+  url: data-model/orderly-network-data-model.yml
+- type: Conformance
+  url: conformance/orderly-network-conformance.yml
+- type: Lifecycle
+  url: lifecycle/orderly-network-lifecycle.yml
+- type: ChangeLog
+  url: changelog/orderly-network-changelog.yml
+- type: Sandbox
+  url: sandbox/orderly-network-sandbox.yml
+- type: AsyncAPI
+  url: asyncapi/orderly-network-websocket-asyncapi.yml
+- type: Webhooks
+  url: asyncapi/orderly-network-websocket-asyncapi.yml
+- type: AgenticAccess
+  url: agentic-access/orderly-network-agentic-access.yml
+- type: DomainSecurity
+  url: security/orderly-network-domain-security.yml
 - type: Website
   url: https://orderly.network/
+x-enrichment:
+  date: '2026-07-20'
+  status: enriched
+  artifacts_added: 20
+  pass: local-v1

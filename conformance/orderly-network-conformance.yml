@@ -1,0 +1,23 @@
+generated: '2026-07-20'
+method: derived
+source: openapi/orderly-network-openapi-original.yml + docs
+standards:
+  - id: oauth2
+    conforms: false
+    evidence: No oauth2 security schemes; auth is ed25519 request signing.
+  - id: oidc
+    conforms: false
+  - id: rfc9457-problem-details
+    conforms: false
+    evidence: Errors use a custom {success,code,message,data} envelope, not application/problem+json.
+  - id: rfc8594-sunset-header
+    conforms: false
+  - id: ed25519-request-signing
+    conforms: true
+    evidence: Documented ed25519 signing over normalized request with orderly-* headers.
+  - id: websocket-streaming
+    conforms: true
+    evidence: Public and private WebSocket streams with topic subscribe/unsubscribe.
+  - id: rest-json
+    conforms: true
+    evidence: OpenAPI 3.0.1 REST API over JSON with page-number pagination.

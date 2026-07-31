@@ -1,0 +1,69 @@
+generated: '2026-07-20'
+method: searched
+source: https://orderly.network/docs/build-on-omnichain/error-codes
+format: orderly-code-envelope
+envelope:
+  description: >
+    Orderly responses use a JSON envelope with a boolean `success`, a numeric
+    Orderly `code`, a human `message`, and a `data` object. On error `success`
+    is false and `code` carries the Orderly error code below (distinct from the
+    HTTP status). Rate-limit rejection is code -1003 / HTTP 429.
+  fields: [success, code, message, timestamp, data]
+error_codes:
+  - code: -1000
+    http: 500
+    message: Unknown error or requested data does not exist.
+  - code: -1001
+    http: 401
+    message: API key or secret is in wrong format.
+  - code: -1002
+    http: 401
+    message: API key or secret is invalid, has insufficient permissions, or is expired/revoked.
+  - code: -1003
+    http: 429
+    message: Rate limit exceeded.
+  - code: -1004
+    http: 400
+    message: An unknown parameter was submitted.
+  - code: -1005
+    http: 400
+    message: Parameter format error (including ratio / liquidation-ratio constraints).
+  - code: -1006
+    http: 400
+    message: Data not found on server (e.g. cancelling an already-CANCELLED order).
+  - code: -1007
+    http: 409
+    message: Data already exists or the request is duplicated.
+  - code: -1008
+    http: 400
+    message: Settlement quantity exceeds the allowed limit.
+  - code: -1009
+    http: 400
+    message: Cannot withdraw; outstanding arrears must be settled first.
+  - code: -1011
+    http: 400
+    message: Network error prevented the order operation.
+  - code: -1012
+    http: 400
+    message: Order rejected (account under liquidation or duplicate liquidation in progress).
+  - code: -1101
+    http: 400
+    message: Risk exposure too high or insufficient margin.
+  - code: -1102
+    http: 400
+    message: The order value (price x size) is too small.
+  - code: -1103
+    http: 400
+    message: Price violation (outside bounds or tick-size mismatch).
+  - code: -1104
+    http: 400
+    message: Quantity violation (outside bounds or step-size mismatch).
+  - code: -1105
+    http: 400
+    message: Price deviation from mid-price threshold exceeded.
+  - code: -1201
+    http: 400
+    message: Notional value or liquidation-ratio constraint violated.
+  - code: -1202
+    http: 400
+    message: Liquidation unnecessary or liquidation ID not found.

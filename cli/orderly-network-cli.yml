@@ -1,0 +1,24 @@
+generated: '2026-07-20'
+method: searched
+source: https://orderly.network/docs/build-on-omnichain/builder-marketplace/cli-reference
+docs: https://orderly.network/docs/build-on-omnichain/builder-marketplace/plugin-developer-handbook
+cli:
+  name: orderly-devkit
+  package: "@orderly.network/devkit"
+  install:
+    - npm install -g @orderly.network/devkit
+    - npx @orderly.network/devkit <command>
+  purpose: >
+    Scaffold, build, validate, and publish Orderly SDK plugins, modules, and
+    DEXs to the Orderly Builders Marketplace.
+  command_groups:
+    - group: scaffold
+      description: Create a plugin/DEX project from a template.
+    - group: validate
+      description: Validate a local plugin folder against the manifest/interceptor targets.
+    - group: submit
+      description: Authenticate with the devkit and submit a plugin for Marketplace review.
+    - group: update
+      description: Update a previously submitted plugin/manifest.
+  related:
+    marketplace_submission: https://orderly.network/docs/build-on-omnichain/builder-marketplace/marketplace-submission

@@ -1,0 +1,29 @@
+generated: '2026-07-20'
+method: generated
+source: openapi/orderly-network-openapi-original.yml
+skills:
+  - file: orderly-network-place-and-manage-order.md
+    name: Place and manage a perpetual-futures order
+    api: openapi/orderly-network-openapi-original.yml
+    operations:
+      - 'POST /v1/order'
+      - 'GET /v1/order/{order_id}'
+      - 'GET /v1/orders'
+      - 'DELETE /v1/order'
+  - file: orderly-network-account-onboarding.md
+    name: Register an account and Orderly Key
+    api: openapi/orderly-network-openapi-original.yml
+    operations:
+      - 'GET /v1/registration_nonce'
+      - 'POST /v1/register_account'
+      - 'POST /v1/orderly_key'
+      - 'GET /v1/client/key_info'
+  - file: orderly-network-market-data.md
+    name: Read market data and positions
+    api: openapi/orderly-network-openapi-original.yml
+    operations:
+      - 'GET /v1/public/futures'
+      - 'GET /v1/orderbook/{symbol}'
+      - 'GET /v1/public/market_trades'
+      - 'GET /v1/positions'
+      - 'GET /v1/client/holding'

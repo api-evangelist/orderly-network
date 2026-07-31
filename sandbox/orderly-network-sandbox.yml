@@ -1,0 +1,21 @@
+generated: '2026-07-20'
+method: searched
+source: https://orderly.network/docs/build-on-omnichain/introduction
+description: >
+  Orderly exposes a full public testnet that mirrors mainnet across REST,
+  WebSocket, and on-chain contracts. Testnet trades use faucet/test USDC and
+  test-chain deployments; no test values are invented here.
+environments:
+  - name: mainnet
+    rest: https://api.orderly.org
+    ws_public: wss://ws-evm.orderly.org/ws/stream/{account_id}
+    ws_private: wss://ws-private-evm.orderly.org/v2/ws/private/stream/{account_id}
+  - name: testnet
+    rest: https://testnet-api.orderly.org
+    ws_public: wss://testnet-ws-evm.orderly.org/ws/stream/{account_id}
+    ws_private: wss://testnet-ws-private-evm.orderly.org/v2/ws/private/stream/{account_id}
+    strategy_vault_rest: https://testnet-api-sv.orderly.org
+notes:
+  - Same ed25519 Orderly-Key signing scheme applies on testnet.
+  - Testnet contract addresses (vault, USDC, Verifier) are published per supported chain.
+  - Contract address reference: https://orderly.network/docs/build-on-omnichain/addresses

@@ -1,0 +1,141 @@
+asyncapi: 3.0.0
+info:
+  title: Orderly Network WebSocket API
+  version: 1.0.0
+  description: >
+    Real-time WebSocket streams for Orderly Network. Public streams carry market
+    data (orderbook, trades, ticker, klines); private streams carry authenticated
+    account, balance, position, and execution-report events. Modeled by API
+    Evangelist from the published WebSocket documentation; not a provider-published
+    AsyncAPI.
+  x-provenance:
+    generated: '2026-07-20'
+    method: generated
+    source: https://orderly.network/docs/build-on-omnichain/websocket-api/introduction
+servers:
+  public-mainnet:
+    host: ws-evm.orderly.org
+    pathname: /ws/stream/{account_id}
+    protocol: wss
+    description: Public market-data stream (mainnet).
+  public-testnet:
+    host: testnet-ws-evm.orderly.org
+    pathname: /ws/stream/{account_id}
+    protocol: wss
+    description: Public market-data stream (testnet).
+  private-mainnet:
+    host: ws-private-evm.orderly.org
+    pathname: /v2/ws/private/stream/{account_id}
+    protocol: wss
+    description: Private authenticated user stream (mainnet); requires ed25519 auth message.
+  private-testnet:
+    host: testnet-ws-private-evm.orderly.org
+    pathname: /v2/ws/private/stream/{account_id}
+    protocol: wss
+    description: Private authenticated user stream (testnet).
+channels:
+  orderbook:
+    address: "{symbol}@orderbook"
+    description: Depth-100 orderbook snapshot for a symbol, pushed roughly every second.
+    messages:
+      orderbook:
+        $ref: '#/components/messages/orderbook'
+  trade:
+    address: "{symbol}@trade"
+    description: Real-time trade execution events for a symbol.
+    messages:
+      trade:
+        $ref: '#/components/messages/trade'
+  ticker:
+    address: "{symbol}@ticker"
+    description: Ticker updates for a symbol.
+    messages:
+      ticker:
+        $ref: '#/components/messages/ticker'
+  kline:
+    address: "{symbol}@kline_1m"
+    description: 1-minute candlestick (kline) stream for a symbol.
+    messages:
+      kline:
+        $ref: '#/components/messages/kline'
+  account:
+    address: account
+    description: Private account information updates.
+    messages:
+      account:
+        $ref: '#/components/messages/generic'
+  balance:
+    address: balance
+    description: Private balance-change events.
+    messages:
+      balance:
+        $ref: '#/components/messages/generic'
+  position:
+    address: position
+    description: Private position updates.
+    messages:
+      position:
+        $ref: '#/components/messages/generic'
+  executionreport:
+    address: executionreport
+    description: Private order execution reports.
+    messages:
+      executionreport:
+        $ref: '#/components/messages/generic'
+operations:
+  receiveOrderbook:
+    action: receive
+    channel:
+      $ref: '#/channels/orderbook'
+  receiveTrade:
+    action: receive
+    channel:
+      $ref: '#/channels/trade'
+  receiveExecutionReport:
+    action: receive
+    channel:
+      $ref: '#/channels/executionreport'
+components:
+  messages:
+    orderbook:
+      name: orderbook
+      payload:
+        type: object
+        properties:
+          topic: { type: string }
+          ts: { type: integer }
+          data:
+            type: object
+            properties:
+              asks: { type: array, items: { type: array } }
+              bids: { type: array, items: { type: array } }
+    trade:
+      name: trade
+      payload:
+        type: object
+        properties:
+          topic: { type: string }
+          ts: { type: integer }
+          data: { type: object }
+    ticker:
+      name: ticker
+      payload:
+        type: object
+        properties:
+          topic: { type: string }
+          data: { type: object }
+    kline:
+      name: kline
+      payload:
+        type: object
+        properties:
+          topic: { type: string }
+          data: { type: object }
+    generic:
+      name: event
+      payload:
+        type: object
+        properties:
+          topic: { type: string }
+          ts: { type: integer }
+          data: { type: object }
