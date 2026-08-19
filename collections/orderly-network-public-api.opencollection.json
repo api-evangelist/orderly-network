@@ -1,0 +1,2509 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "EVM admin public API",
+    "version": "1.0.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "public",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get market info for all symbols",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.orderly.org/v1/public/futures"
+          },
+          "docs": "\n**Limit: 10 requests per 1 second per IP address**\n\n`GET /v1/public/futures`\n\nGet basic market information for all the symbols.\n"
+        },
+        {
+          "info": {
+            "name": "Get IP info",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.orderly.org/v1/ip_info"
+          },
+          "docs": "\n**Limit: 10 requests per 1 second per IP address**\n\n`GET /v1/ip_info`\n\nReturns the detected IP address and location metadata for the calling client.\n"
+        },
+        {
+          "info": {
+            "name": "Get market volume by builder",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.orderly.org/v1/public/futures_market",
+            "params": [
+              {
+                "name": "symbol",
+                "value": "",
+                "type": "query",
+                "description": "Filter results to a specific market symbol, for example `PERP_ETH_USDC`."
+              },
+              {
+                "name": "broker_id",
+                "value": "",
+                "type": "query",
+                "description": "Filter results to a specific broker ID."
+              }
+            ]
+          },
+          "docs": "\n**Limit: 10 requests per 1 second per IP address**\n\n`GET /v1/public/futures_market`\n\nReturns market-level trading volume data. Use `symbol` to filter by market and `broker_id` to filter by builder.\n"
+        },
+        {
+          "info": {
+            "name": "Get TVL by builder",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.orderly.org/v1/public/balance/stats",
+            "params": [
+              {
+                "name": "broker_id",
+                "value": "",
+                "type": "query",
+                "description": "When omitted, returns TVL for all brokers."
+              }
+            ]
+          },
+          "docs": "\n**Limit: 10 requests per 1 second per IP address**\n\n`GET /v1/public/balance/stats`\n\nReturns TVL (total balance plus unsettled PnL), optionally filtered by broker ID.\n"
+        },
+        {
+          "info": {
+            "name": "Get market trades",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.orderly.org/v1/public/market_trades",
+            "params": [
+              {
+                "name": "symbol",
+                "value": "PERP_NEAR_USDC",
+                "type": "query",
+                "description": "Symbol to query, for example `PERP_BTC_USDC`."
+              },
+              {
+                "name": "limit",
+                "value": "10",
+                "type": "query",
+                "description": "Numbers of trades want to query."
+              }
+            ]
+          },
+          "docs": "\n**Limit: 10 requests per 1 second per IP address**\n\n`GET /v1/public/market_trades`\n\nGet the latest market trades.\n"
+        },
+        {
+          "info": {
+            "name": "Get price info for all symbols",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.orderly.org/v1/public/market_info/price_changes"
+          },
+          "docs": "\n**Limit: 10 requests per 1 second per IP address**\n\n`GET /v1/public/market_info/price_changes`\n\nReturn the current price and the price 5m, 30m, 1h, 24h, 3d, 7d, 30d ago for all symbols\n\nExamples:\n\n- Now: 11:06:30 (2024-07-11)  \n\n- 5m: 11:01:00 (2024-07-11)\n\n- 30m: 10:36:00 (2024-07-11)\n\n- 1h: 10:06:00 (2024-07-11)\n\n- 4h: 07:06:00 (2024-07-11)\n\n- 24h: 11:06:00 (2024-07-10)\n\n- 3d: 00:00:00 (2024-07-08)\n\n- 7d: 00:00:00 (2024-07-04)\n\n- 30d: 00:00:00 (2024-06-11)\n"
+        },
+        {
+          "info": {
+            "name": "Get open interests for all symbols",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.orderly.org/v1/public/market_info/traders_open_interests"
+          },
+          "docs": "\n**Limit: 10 requests per 1 second per IP address**\n\n`GET /v1/public/market_info/traders_open_interests`\n\nReturn the long/short Open Interests for all symbols (mm accounts are excluded).\n"
+        },
+        {
+          "info": {
+            "name": "Get historical price list for all symbols",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.orderly.org/v1/public/market_info/history_charts",
+            "params": [
+              {
+                "name": "time_interval",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "\n**Limit: 10 requests per 1 second per IP address**\n\n`GET /v1/public/market_info/history_charts`\n\nReturn the close price for all symbols\n"
+        },
+        {
+          "info": {
+            "name": "Get funding rate for all markets",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.orderly.org/v1/public/market_info/funding_history"
+          },
+          "docs": "\n**Limit: 10 requests per 1 second per IP address**\n\n`GET /v1/public/market_info/funding_history`\n"
+        },
+        {
+          "info": {
+            "name": "Get builder volume",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.orderly.org/v1/public/volume/stats",
+            "params": [
+              {
+                "name": "broker_id",
+                "value": "test_broker",
+                "type": "query",
+                "description": "Filter results to a specific broker ID."
+              }
+            ]
+          },
+          "docs": "\n**Limit: 10 requests per 1 second per IP address**\n\n`GET /v1/public/volume/stats`\n\nReturns the latest trading volume statistics for Orderly and its associated builders. For a specific builder, volume is calculated as maker volume plus taker volume. Platform-wide volume counts each matched trade once.\n"
+        },
+        {
+          "info": {
+            "name": "Get builder stats",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.orderly.org/v1/public/broker/stats",
+            "params": [
+              {
+                "name": "broker_id",
+                "value": "test_broker",
+                "type": "query",
+                "description": "Filter results to a specific broker ID."
+              }
+            ]
+          },
+          "docs": "\n**Limit: 10 requests per 1 second per IP address**\n\n`GET /v1/public/broker/stats?broker_id={broker_id}`\n\nReturns statistics for builders on Orderly. Use `broker_id` to limit the response to a single builder.\n"
+        },
+        {
+          "info": {
+            "name": "Get builder list",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.orderly.org/v1/public/broker/name",
+            "params": [
+              {
+                "name": "broker_id",
+                "value": "test_broker",
+                "type": "query",
+                "description": "Filter results to a specific broker ID."
+              }
+            ]
+          },
+          "docs": "\n**Limit: 10 requests per 1 second per IP address**\n\n`GET /v1/public/broker/name?broker_id={broker_id}`\n\nReturns the list of builders currently onboarded to Orderly. Use `broker_id` to retrieve a single builder entry.\n"
+        },
+        {
+          "info": {
+            "name": "Get predicted funding rates for all markets",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.orderly.org/v1/public/funding_rates"
+          },
+          "docs": "\n**Limit: 10 requests per 1 second per IP address**\n\n`GET /v1/public/funding_rates`\n\nGet predicted funding rates for all futures trading pairs.\n\nGet the : \n* `last_funding_rate` : latest hourly funding rate for all the markets for the last funding period (dt = 8h)\n* `est_funding_rate` : rolling average of all funding rates over the last 8 hours"
+        },
+        {
+          "info": {
+            "name": "Get predicted funding rate for one market",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.orderly.org/v1/public/funding_rate/:symbol",
+            "params": [
+              {
+                "name": "symbol",
+                "value": "PERP_ETH_USDC",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "\n**Limit: 30 requests per 1 second per IP address**\n\n`GET /v1/public/funding_rate/{symbol}`\n\nGet latest funding rate for one market.\n"
+        },
+        {
+          "info": {
+            "name": "Get funding rate history for one market",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.orderly.org/v1/public/funding_rate_history",
+            "params": [
+              {
+                "name": "symbol",
+                "value": "PERP_NEAR_USDC",
+                "type": "query"
+              },
+              {
+                "name": "start_t",
+                "value": "",
+                "type": "query",
+                "description": "start time range that you wish to query, noted that the time stamp is a 13-digits timestamp."
+              },
+              {
+                "name": "end_t",
+                "value": "",
+                "type": "query",
+                "description": "end time range that you wish to query, noted that the time stamp is a 13-digits timestamp."
+              },
+              {
+                "name": "page",
+                "value": "",
+                "type": "query",
+                "description": "the page you wish to query. start from 1"
+              },
+              {
+                "name": "size",
+                "value": "",
+                "type": "query",
+                "description": "Default: 60"
+              }
+            ]
+          },
+          "docs": "\n**Limit: 10 requests per 1 second per IP address**\n\n\n`GET /v1/public/funding_rate_history`\n\n\nGet funding rate history for one market.\n"
+        },
+        {
+          "info": {
+            "name": "Get market info for one symbol",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.orderly.org/v1/public/futures/:symbol",
+            "params": [
+              {
+                "name": "symbol",
+                "value": "PERP_ETH_USDC",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "\n**Limit: 10 requests per 1 second per IP address**\n\n`GET /v1/public/futures/{symbol}`\n\nGet basic market information for one trading pair.\n"
+        },
+        {
+          "info": {
+            "name": "Get positions under liquidation",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.orderly.org/v1/public/liquidation",
+            "params": [
+              {
+                "name": "start_t",
+                "value": "",
+                "type": "query",
+                "description": "start time range that you wish to query, noted that the time stamp is a 13-digits timestamp."
+              },
+              {
+                "name": "end_t",
+                "value": "",
+                "type": "query",
+                "description": "end time range that you wish to query, noted that the time stamp is a 13-digits timestamp."
+              },
+              {
+                "name": "page",
+                "value": "",
+                "type": "query",
+                "description": "the page you wish to query. start from 1"
+              },
+              {
+                "name": "size",
+                "value": "",
+                "type": "query",
+                "description": "Default: 60"
+              }
+            ]
+          },
+          "docs": "**Limit: 10 requests per 1 second per IP address**\n\n`GET /v1/public/liquidation`\n\nReturns a list of positions that are currently being liquidated. These are positions where the margin has dropped below the maintenance margin requirement and are in the process of being closed by the liquidation engine.\n"
+        },
+        {
+          "info": {
+            "name": "Get liquidated positions info",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.orderly.org/v1/public/liquidated_positions",
+            "params": [
+              {
+                "name": "symbol",
+                "value": "PERP_ETH_USDC",
+                "type": "query",
+                "description": "Filter results to a specific trading symbol, for example `PERP_ETH_USDC`."
+              },
+              {
+                "name": "start_t",
+                "value": "",
+                "type": "query",
+                "description": "Start time of the query range as a 13-digit Unix timestamp in milliseconds."
+              },
+              {
+                "name": "end_t",
+                "value": "",
+                "type": "query",
+                "description": "End time of the query range as a 13-digit Unix timestamp in milliseconds."
+              },
+              {
+                "name": "page",
+                "value": "",
+                "type": "query",
+                "description": "Page number to return. Starts from 1."
+              },
+              {
+                "name": "size",
+                "value": "",
+                "type": "query",
+                "description": "Number of records to return per page."
+              }
+            ]
+          },
+          "docs": "\n**Limit: 10 requests per 1 second per IP address**\n\n`GET /v1/public/liquidated_positions`\n\nReturns a list of positions that have been fully liquidated. This includes historical data on positions that were closed by the liquidation engine after margin was exhausted.\n"
+        },
+        {
+          "info": {
+            "name": "Get order rules per symbol",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.orderly.org/v1/public/info/:symbol",
+            "params": [
+              {
+                "name": "symbol",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "\n**Limit: 10 requests per 1 second per IP address**\n\n\n`GET /v1/public/info/{symbol}`\n\n\nThis endpoint provides all the values for the rules that an order need\nto fulfil in order for it to be placed successfully. The rules are\ndefined as follows:\n\n\nPrice filter\n\n\n- `price` >= `quote_min`\n\n- `price` =< `quote_max`\n\n- `(price - quote_min) % quote_tick` should equal to zero\n\n- `price` =< `mark_price * (1 + price_range)` when BUY\n\n- `price` >= `mark_price * (1 - price_range)` when SELL\n\n\nSize filter\n\n"
+        },
+        {
+          "info": {
+            "name": "Get supported collateral info",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.orderly.org/v1/public/token",
+            "params": [
+              {
+                "name": "chain_id",
+                "value": "",
+                "type": "query",
+                "description": "Filter results by chain_id"
+              }
+            ]
+          },
+          "docs": "**Limit: 10 requests per 1 second per IP address**\n\n`GET /v1/public/token`\n\nRetrieves the available tokens to be used as collateral within Orderly.\n"
+        },
+        {
+          "info": {
+            "name": "Get available symbols",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.orderly.org/v1/public/info"
+          },
+          "docs": "**Limit: 10 requests per 1 second per IP address**\n\n`GET /v1/public/info`\n\nGet available symbols that Orderly supports, and also send order rules for each symbol. The definition of rules can be found at [Get Order Rules per Market](/docs/build-on-omnichain/restful-api/public/get-order-rules-per-symbol)\n"
+        },
+        {
+          "info": {
+            "name": "Get index price source",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.orderly.org/v1/public/index_price_source"
+          },
+          "docs": "**Limit: 10 requests per 1 second per IP address**\n\n`GET /v1/public/index_price_source`\n\nRetrieves the available tokens to be used as collateral within Orderly.\n"
+        },
+        {
+          "info": {
+            "name": "Get insurance fund info",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.orderly.org/v1/public/insurancefund"
+          },
+          "docs": "\n**Limit: 10 requests per 1 second per IP address**\n\n`GET /v1/public/insurancefund`\n\nReturns the current balance and risk metrics for the Orderly insurance fund.\n"
+        },
+        {
+          "info": {
+            "name": "Get tradingview localized config info",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.orderly.org/v1/tv/config",
+            "params": [
+              {
+                "name": "locale",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "**Limit: 10 requests per 1 second per IP address**\n\n`GET /v1/tv/config`\n"
+        },
+        {
+          "info": {
+            "name": "Get tradingview history bars",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.orderly.org/v1/tv/history",
+            "params": [
+              {
+                "name": "symbol",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "resolution",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "from",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "to",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "**Limit: 10 requests per 1 second per IP address**\n\n`GET /v1/tv/history?symbol={}&resolution={}&from={}&to={}`\n"
+        },
+        {
+          "info": {
+            "name": "Get tradingview symbol info",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.orderly.org/v1/tv/symbol_info",
+            "params": [
+              {
+                "name": "group",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "**Limit: 10 requests per 1 second per IP address**\n\n`GET /v1/tv/symbol_info`\n"
+        },
+        {
+          "info": {
+            "name": "Get max leverage setting",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.orderly.org/v1/public/leverage"
+          },
+          "docs": "**Limit: 10 requests per 1 second per IP address**\n\n`GET /v1/public/leverage`\n\nGet max leverage setting\n"
+        },
+        {
+          "info": {
+            "name": "Get system maintenance status",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.orderly.org/v1/public/system_info"
+          },
+          "docs": "**Limit: 1 request per 1 second per IP address**\n\n`GET /v1/public/system_info`\n\nReturns the current system status for Orderly. `status = 0` indicates normal operation. `status = 2` indicates maintenance mode."
+        },
+        {
+          "info": {
+            "name": "Get registration nonce",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.orderly.org/v1/registration_nonce"
+          },
+          "docs": "**Limit: 10 requests per 1 second per IP address**\n\n`GET /v1/registration_nonce`\n\nRetrieve a nonce used for registering an account on Orderly. The validity of the nonce value is `2` minutes. Each nonce can only be used once (ie for one account)."
+        },
+        {
+          "info": {
+            "name": "Check if wallet is registered",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.orderly.org/v1/get_account",
+            "params": [
+              {
+                "name": "address",
+                "value": "",
+                "type": "query",
+                "description": "The address of the user wallet"
+              },
+              {
+                "name": "broker_id",
+                "value": "",
+                "type": "query",
+                "description": "Builder ID to check for the wallet address."
+              },
+              {
+                "name": "chain_type",
+                "value": "EVM",
+                "type": "query",
+                "description": "`EVM` or `SOL`"
+              }
+            ]
+          },
+          "docs": "**Limit: 10 requests per 1 second per IP address**\n\n`GET /v1/get_account`\n\nCheck whether a wallet has a registered account with the provided builder ID.\n"
+        },
+        {
+          "info": {
+            "name": "Check account details of an address",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.orderly.org/v1/get_all_accounts",
+            "params": [
+              {
+                "name": "address",
+                "value": "",
+                "type": "query",
+                "description": "The address of the user wallet"
+              },
+              {
+                "name": "broker_id",
+                "value": "",
+                "type": "query",
+                "description": "Builder ID whose accounts should be returned."
+              },
+              {
+                "name": "chain_type",
+                "value": "EVM",
+                "type": "query",
+                "description": "`EVM` or `SOL`"
+              }
+            ]
+          },
+          "docs": "**Limit: 10 requests per 1 second per IP address**\n\n`GET /v1/get_all_accounts`\n\nReturns all accounts associated with the provided wallet address and builder ID.\n"
+        },
+        {
+          "info": {
+            "name": "Check if address is registered",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.orderly.org/v1/get_broker",
+            "params": [
+              {
+                "name": "address",
+                "value": "",
+                "type": "query",
+                "description": "Wallet address to check."
+              },
+              {
+                "name": "chain_type",
+                "value": "EVM",
+                "type": "query",
+                "description": "`EVM` or `SOL`"
+              }
+            ]
+          },
+          "docs": "**Limit: 10 requests per 1 second per IP address**\n\n`GET /v1/get_broker`\n\nChecks whether an address is already registered and returns the associated builder IDs.\n"
+        },
+        {
+          "info": {
+            "name": "Register account",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.orderly.org/v1/register_account",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "**Limit: 10 requests per 1 second per IP address**\n\n`POST /v1/register_account`\n\nRegisters a new account for the provided wallet under the specified builder.\n"
+        },
+        {
+          "info": {
+            "name": "Get Orderly key",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.orderly.org/v1/get_orderly_key",
+            "params": [
+              {
+                "name": "account_id",
+                "value": "",
+                "type": "query",
+                "description": "The account id of the user."
+              },
+              {
+                "name": "orderly_key",
+                "value": "",
+                "type": "query",
+                "description": "The public key of the Orderly access key."
+              }
+            ]
+          },
+          "docs": "**Limit: 10 requests per 1 second per IP address**\n\n`GET /v1/get_orderly_key`\n\nCheck the validity of an Orderly access key attached to the account.\n"
+        },
+        {
+          "info": {
+            "name": "Add Orderly key",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.orderly.org/v1/orderly_key",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "**Limit: 10 requests per 1 second per IP address**\n\n`POST /v1/orderly_key`\n\nAdds an orderly key to an account.\n\nA main account's orderly key can manage its sub accounts.\n"
+        },
+        {
+          "info": {
+            "name": "Get leverage configuration",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.orderly.org/v1/public/config"
+          },
+          "docs": "\n**Limit: 10 requests per 1 second per IP address**\n\n`GET /v1/public/config`\n\nReturns the leverage configuration available to users on Orderly.\n"
+        },
+        {
+          "info": {
+            "name": "Get supported chains per builder",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.orderly.org/v1/public/chain_info",
+            "params": [
+              {
+                "name": "broker_id",
+                "value": "woofi_pro",
+                "type": "query",
+                "description": "Filter results to a specific broker ID."
+              }
+            ]
+          },
+          "docs": "**Limit: 10 requests per 1 second per IP address**\n\n`GET /v1/public/chain_info`\n\nReturns the chains supported by the specified builder. When `broker_id` is omitted, the response includes all supported chains.\n"
+        },
+        {
+          "info": {
+            "name": "Get kline",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.orderly.org/v1/kline",
+            "headers": [
+              {
+                "name": "orderly-timestamp",
+                "value": "1649920583000"
+              },
+              {
+                "name": "orderly-account-id",
+                "value": "6.858456565150415e+75"
+              },
+              {
+                "name": "orderly-key",
+                "value": "ed25519:8tm7dnKYkSc3FzgPuJaw1wztr79eeZpN35nHW5pL5XhX"
+              },
+              {
+                "name": "orderly-signature",
+                "value": "dG4bkKiqG0dUYLzViRZkvbI6Sy239JxAdNMIBxFZ4w030Jofr0ORV06GHtvXZkaZaWUXE+XAU3fnzKN/5fDeBQ=="
+              }
+            ],
+            "params": [
+              {
+                "name": "symbol",
+                "value": "PERP_BTC_USDC",
+                "type": "query"
+              },
+              {
+                "name": "type",
+                "value": "",
+                "type": "query",
+                "description": "1m/5m/15m/30m/1h/4h/12h/1d/1w/1mon/1y"
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "Numbers of klines. Maximum of 1000 klines."
+              }
+            ]
+          },
+          "docs": "\n**Limit: 10 requests per 1 second**\n\n`GET /v1/kline`\n\nGet the latest klines (OHLC) of the specified symbol.\n\nPlease note that for symbols with low trading activity, the kline might be generated through the mid price of the orderbook in addition to any executed trades on the platform.\n"
+        },
+        {
+          "info": {
+            "name": "Get kline history",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.orderly.org/v1/tv/kline_history",
+            "headers": [
+              {
+                "name": "orderly-timestamp",
+                "value": "1649920583000"
+              },
+              {
+                "name": "orderly-account-id",
+                "value": "6.858456565150415e+75"
+              },
+              {
+                "name": "orderly-key",
+                "value": "ed25519:8tm7dnKYkSc3FzgPuJaw1wztr79eeZpN35nHW5pL5XhX"
+              },
+              {
+                "name": "orderly-signature",
+                "value": "dG4bkKiqG0dUYLzViRZkvbI6Sy239JxAdNMIBxFZ4w030Jofr0ORV06GHtvXZkaZaWUXE+XAU3fnzKN/5fDeBQ=="
+              }
+            ],
+            "params": [
+              {
+                "name": "symbol",
+                "value": "PERP_BTC_USDC",
+                "type": "query",
+                "description": "Symbol name"
+              },
+              {
+                "name": "resolution",
+                "value": "1d",
+                "type": "query",
+                "description": "`1m/5m/15m/30m/1h/4h/12h/1d/1w/1mon`"
+              },
+              {
+                "name": "from",
+                "value": "1761926400",
+                "type": "query",
+                "description": "If the range from from to to contains 1200 klines, only 1000 klines will be returned, starting from to and moving backward (due to the limit)."
+              },
+              {
+                "name": "to",
+                "value": "1762790400",
+                "type": "query",
+                "description": "If the range from from to to contains only 500 klines, then all 500 will be returned, starting from to and moving backward."
+              },
+              {
+                "name": "limit",
+                "value": "1000",
+                "type": "query",
+                "description": "Numbers of klines you want to query.  Maximum of 1000 klines allowed."
+              }
+            ]
+          },
+          "docs": "\n**Limit: 5 request per 10 second per IP address**\n\n`GET /v1/tv/kline_history`\n\nGet the historical klines of the specified symbol\n"
+        },
+        {
+          "info": {
+            "name": "Get vault balance",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.orderly.org/v1/public/vault_balance",
+            "params": [
+              {
+                "name": "chain_id",
+                "value": "",
+                "type": "query",
+                "description": "Chain ID to query. Use `900900900` for Solana."
+              },
+              {
+                "name": "token",
+                "value": "",
+                "type": "query",
+                "description": "Token symbol to query, for example `USDC`. If omitted, returns all supported tokens."
+              }
+            ]
+          },
+          "docs": "Returns the current vault balance by chain and token. Use `chain_id` and `token` to narrow the result set."
+        },
+        {
+          "info": {
+            "name": "Get faucet usdc(testnet only)",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.orderly.org/v1/faucet/usdc",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Testnet-only endpoint for requesting faucet USDC.\n\n`POST https://testnet-operator-evm.orderly.org/v1/faucet/usdc`\n\n`POST https://testnet-operator-sol.orderly.org/v1/faucet/usdc`\n\nEVM testnet claims receive 1,000 USDC. Solana testnet claims receive 100 USDC.\n\nEach account can claim from the faucet up to 5 times.\n\nUse the EVM operator domain for EVM addresses and the Solana operator domain for Solana addresses. Do not use a mainnet domain."
+        },
+        {
+          "info": {
+            "name": "Check if account exists",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.orderly.org/v1/public/account",
+            "params": [
+              {
+                "name": "account_id",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "**Limit: 10 requests per 1 second per IP address**\n\n`GET /v1/public/account`\n\nCheck if provided account account is registered with Orderly and it's respective builder."
+        },
+        {
+          "info": {
+            "name": "Get announcements",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.orderly.org/v1/public/announcement"
+          },
+          "docs": "**Limit: 10 requests per 1 second per IP address**\n\n`GET /v1/public/announcement`\n\nReturns active platform announcements published by Orderly."
+        },
+        {
+          "info": {
+            "name": "Check referral code",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.orderly.org/v1/public/referral/check_ref_code",
+            "params": [
+              {
+                "name": "account_id",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "**Limit: 10 requests per 1 second per IP address**\n\n\n`GET /v1/public/referral/check_ref_code`\n"
+        },
+        {
+          "info": {
+            "name": "Verify referral code",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.orderly.org/v1/public/referral/verify_ref_code",
+            "params": [
+              {
+                "name": "referral_code",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "**Limit: 10 requests per second**\n\n\n`GET /v1/public/referral/verify_ref_code`\n"
+        },
+        {
+          "info": {
+            "name": "Get merits leaderboard",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.orderly.org/v1/public/points/leaderboard",
+            "params": [
+              {
+                "name": "start_r",
+                "value": "",
+                "type": "query",
+                "description": "Starting rank you wish to query"
+              },
+              {
+                "name": "end_r",
+                "value": "",
+                "type": "query",
+                "description": "Ending rank you wish to query"
+              },
+              {
+                "name": "epoch_id",
+                "value": "",
+                "type": "query",
+                "description": "the epoch for which you want to check the leaderboard"
+              },
+              {
+                "name": "page",
+                "value": "",
+                "type": "query",
+                "description": "start from 1"
+              },
+              {
+                "name": "size",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "**Limit: 10 requests per 1 second per IP address**\n\n`GET /v1/public/points/leaderboard`\n"
+        },
+        {
+          "info": {
+            "name": "Get user's merits",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.orderly.org/v1/client/points",
+            "params": [
+              {
+                "name": "address",
+                "value": "sample_address",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "**Limit: 10 requests per 1 second per user**\n\n`GET /v1/client/points`\n"
+        },
+        {
+          "info": {
+            "name": "Get start and end date of all epochs",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.orderly.org/v1/public/points/epoch_dates"
+          },
+          "docs": "**Limit: 10 requests per 1 second per user**\n\n`GET /v1/public/points/epoch_dates`\n\nRetrieve the dates of all epochs\n"
+        },
+        {
+          "info": {
+            "name": "Get stage rankings",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.orderly.org/v1/public/points/rankings",
+            "params": [
+              {
+                "name": "stage",
+                "value": "",
+                "type": "query",
+                "description": "Filter by Stage"
+              },
+              {
+                "name": "page",
+                "value": "",
+                "type": "query",
+                "description": "Page number"
+              },
+              {
+                "name": "size",
+                "value": "",
+                "type": "query",
+                "description": "Items per page"
+              },
+              {
+                "name": "period",
+                "value": "",
+                "type": "query",
+                "description": "Filter by period (`all_time`/`last_week`/`this_week`)"
+              }
+            ]
+          },
+          "docs": "**Limit: 10 requests per 1 second per user per IP address**\n\n`GET /v1/public/points/rankings`\n\nReturns the rankings for a specific stage.\n\nNote: Need to aggregate the point data from all sub accounts with the same address.\n"
+        },
+        {
+          "info": {
+            "name": "Get number of merits for distribution",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.orderly.org/v1/public/points/epoch"
+          },
+          "docs": "**Limit: 10 requests per 1 second per user per IP address**\n\n`GET /v1/public/points/epoch`\n\nRetrieve the number of merits for past epochs and current epoch\n"
+        },
+        {
+          "info": {
+            "name": "Get information about stages",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.orderly.org/v1/public/points/stages",
+            "params": [
+              {
+                "name": "stage_id",
+                "value": "",
+                "type": "query",
+                "description": "Filter by specific Stage, return all if empty"
+              },
+              {
+                "name": "status",
+                "value": "",
+                "type": "query",
+                "description": "Filter by status (`completed`/`active`), return all if empty except pending"
+              },
+              {
+                "name": "broker_id",
+                "value": "",
+                "type": "query",
+                "description": "Filter by Broker"
+              }
+            ]
+          },
+          "docs": "**Limit: 10 requests per 1 second per user per IP address**\n\n`GET /v1/public/points/stages`\n\nReturns information about stages.\n"
+        },
+        {
+          "info": {
+            "name": "Delegate signer",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.orderly.org/v1/delegate_signer",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "**Limit: 1 requests per second**\n\n`POST /v1/delegate_signer`\n\nRegisters a delegate signer relationship for an account using a wallet-signed message.\n"
+        },
+        {
+          "info": {
+            "name": "Add delegate signer Orderly key",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.orderly.org/v1/delegate_orderly_key",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "**Limit: 1 requests per second**\n\n`POST /v1/delegate_orderly_key`\n\nAdds an orderly key for a delegate signer after the delegate relationship has been authorized.\n"
+        },
+        {
+          "info": {
+            "name": "Get list of campaigns",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.orderly.org/v1/public/campaigns",
+            "params": [
+              {
+                "name": "start_t",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "end_t",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "only_show_alive",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "address",
+                "value": "",
+                "type": "query",
+                "description": "Filter the list that this address has participated in."
+              }
+            ]
+          },
+          "docs": "**Limit: 10 requests per 1 second per IP address**\n\n`GET /v1/public/campaigns`\n"
+        },
+        {
+          "info": {
+            "name": "Get campaign statistics",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.orderly.org/v1/public/campaign/stats",
+            "params": [
+              {
+                "name": "campaign_id",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "broker_id",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "symbol",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "**Limit: 10 requests per 1 second per IP address**\n\n`GET /v1/public/campaign/stats`\n"
+        },
+        {
+          "info": {
+            "name": "Get detailed campaign info",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.orderly.org/v1/public/campaign/stats/details",
+            "params": [
+              {
+                "name": "campaign_id",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "broker_id",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "symbols",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "group_by",
+                "value": "",
+                "type": "query",
+                "description": "One of `BROKER`  `SYMBOL`  `NONE`"
+              }
+            ]
+          },
+          "docs": "**Limit: 10 requests per 1 minute per IP address**\n\n`GET /v1/public/campaign/stats/details`\n"
+        },
+        {
+          "info": {
+            "name": "Get campaign ranking",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.orderly.org/v1/public/campaign/ranking",
+            "params": [
+              {
+                "name": "campaign_id",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "broker_id",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "page",
+                "value": "",
+                "type": "query",
+                "description": "start from 1"
+              },
+              {
+                "name": "size",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "sort_by",
+                "value": "",
+                "type": "query",
+                "description": "`volume`/`pnl`"
+              },
+              {
+                "name": "min_pnl",
+                "value": "1000",
+                "type": "query",
+                "description": "Return only records where PnL is greater than or equal to this value."
+              },
+              {
+                "name": "min_volume",
+                "value": "5000",
+                "type": "query",
+                "description": "Return only records where Volume is greater than or equal to this value."
+              },
+              {
+                "name": "aggregate_by",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "**Limit: 10 requests per 1 second per IP address**\n\n`GET /v1/public/campaign/ranking`\n"
+        },
+        {
+          "info": {
+            "name": "Get campaign user info",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.orderly.org/v1/public/campaign/user",
+            "params": [
+              {
+                "name": "campaign_id",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "account_id",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "address",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "broker_id",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "symbol",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "order_tag",
+                "value": "",
+                "type": "query",
+                "description": "Filter by a custom tag assigned to the order."
+              }
+            ]
+          },
+          "docs": "**Limit: 10 requests per 1 second per IP address**\n\n`GET /v1/public/campaign/user`\n"
+        },
+        {
+          "info": {
+            "name": "Get campaign verification",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.orderly.org/v1/public/campaign/check",
+            "params": [
+              {
+                "name": "campaign_id",
+                "value": "10",
+                "type": "query"
+              },
+              {
+                "name": "type",
+                "value": "",
+                "type": "query",
+                "description": "`volume`/`deposit`/`withdraw`/`order_count`"
+              },
+              {
+                "name": "address",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "lower_boundary",
+                "value": "100",
+                "type": "query"
+              },
+              {
+                "name": "cmp",
+                "value": "gt",
+                "type": "query",
+                "description": "`gt`/`ge`/`le`/`lt`, default `gt`"
+              }
+            ]
+          },
+          "docs": "**Limit: 10 requests per 1 second per IP address**\n\n`GET /v1/public/campaign/check`\n"
+        },
+        {
+          "info": {
+            "name": "Get staking overview",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.orderly.org/v1/staking/overview"
+          },
+          "docs": "**Limit: 10 requests per 1 second per IP address**\n\n\n`GET /v1/staking/overview`\n"
+        },
+        {
+          "info": {
+            "name": "Get valor batch info",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.orderly.org/v1/staking/valor/batch_info"
+          },
+          "docs": "**Limit: 10 requests per 1 second per IP address**\n\n\n`GET /v1/staking/valor/batch_info`\n"
+        },
+        {
+          "info": {
+            "name": "Get valor pool info",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.orderly.org/v1/staking/valor/pool_info"
+          },
+          "docs": "**Limit: 10 requests per 1 second per IP address**\n\n\n`GET /v1/staking/valor/pool_info`\n"
+        },
+        {
+          "info": {
+            "name": "Get valor2 pool info",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.orderly.org/v1/staking/valor2/pool_info"
+          },
+          "docs": "**Limit: 10 requests per 1 second per IP address**\n\n\n`GET /v1/staking/valor2/pool_info`\n"
+        },
+        {
+          "info": {
+            "name": "Get valor2 batch info",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.orderly.org/v1/staking/valor2/batch_info"
+          },
+          "docs": "**Limit: 10 requests per 1 second per IP address**\n\n\n`GET /v1/staking/valor2/batch_info`\n"
+        },
+        {
+          "info": {
+            "name": "Get valor2 revenue buyback",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.orderly.org/v1/staking/valor2/revenue_buyback"
+          },
+          "docs": "**Limit: 10 requests per 1 second per IP address**\n\nOrder by batch_id. Display the amount after the batch is claimable.\n\n`GET /v1/staking/valor2/revenue_buyback`\n"
+        },
+        {
+          "info": {
+            "name": "Get strategy vault nonce for account transaction",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.orderly.org/v1/public/sv_nonce"
+          },
+          "docs": "**Limit: 10 requests per 1 second per IP address**\n\n`GET /v1/public/sv_nonce`\n"
+        },
+        {
+          "info": {
+            "name": "Get account’s strategy vault transaction history",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.orderly.org/v1/account_sv_transaction_history",
+            "headers": [
+              {
+                "name": "orderly-account-id",
+                "value": "6.858456565150415e+75"
+              },
+              {
+                "name": "orderly-key",
+                "value": "ed25519:8tm7dnKYkSc3FzgPuJaw1wztr79eeZpN35nHW5pL5XhX"
+              },
+              {
+                "name": "orderly-signature",
+                "value": "dG4bkKiqG0dUYLzViRZkvbI6Sy239JxAdNMIBxFZ4w030Jofr0ORV06GHtvXZkaZaWUXE+XAU3fnzKN/5fDeBQ=="
+              }
+            ],
+            "params": [
+              {
+                "name": "vault_id",
+                "value": "",
+                "type": "query",
+                "description": "if vault_id is empty, it will return all vaults"
+              },
+              {
+                "name": "start_t",
+                "value": "",
+                "type": "query",
+                "description": "start time range that you wish to query, noted that the time stamp is a 13-digits timestamp."
+              },
+              {
+                "name": "end_t",
+                "value": "",
+                "type": "query",
+                "description": "end time range that you wish to query, noted that the time stamp is a 13-digits timestamp."
+              },
+              {
+                "name": "page",
+                "value": "",
+                "type": "query",
+                "description": "the page you wish to query. start from 1"
+              },
+              {
+                "name": "size",
+                "value": "",
+                "type": "query",
+                "description": "Default: 60"
+              },
+              {
+                "name": "type",
+                "value": "",
+                "type": "query",
+                "description": "deposit/withdraw, if empty = return all"
+              }
+            ]
+          },
+          "docs": "`GET /v1/account_sv_transaction_history`\n\nGet account transaction history with strategy vaults\n"
+        },
+        {
+          "info": {
+            "name": "Create strategy vault deposit/withdrawal request with account",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.orderly.org/v1/sv_operation_request",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "\n**Limit: 10 requests per 1 second per IP address**\n\n`POST /v1/sv_operation_request`\n\nDeposit into a strategy vault with account balance / withdraw from a strategy vault into your account balance\n"
+        },
+        {
+          "info": {
+            "name": "Get fund inflow allocation",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.orderly.org/v1/sv/venue_transfer_history",
+            "headers": [
+              {
+                "name": "orderly-timestamp",
+                "value": "1649920583000"
+              },
+              {
+                "name": "orderly-account-id",
+                "value": "6.858456565150415e+75"
+              },
+              {
+                "name": "orderly-key",
+                "value": "ed25519:8tm7dnKYkSc3FzgPuJaw1wztr79eeZpN35nHW5pL5XhX"
+              },
+              {
+                "name": "orderly-signature",
+                "value": "dG4bkKiqG0dUYLzViRZkvbI6Sy239JxAdNMIBxFZ4w030Jofr0ORV06GHtvXZkaZaWUXE+XAU3fnzKN/5fDeBQ=="
+              }
+            ],
+            "params": [
+              {
+                "name": "period_number",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "page",
+                "value": "",
+                "type": "query",
+                "description": "the page you wish to query start from 1"
+              },
+              {
+                "name": "size",
+                "value": "",
+                "type": "query",
+                "description": "the page size you wish to query (max: 500)"
+              }
+            ]
+          },
+          "docs": "\n**Limit: 10 requests per second per IP address**\n\n`GET /v1/sv/venue_transfer_history`\n"
+        },
+        {
+          "info": {
+            "name": "Get fund outflow allocation",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.orderly.org/v1/sv/venue_withdrawal_history",
+            "headers": [
+              {
+                "name": "orderly-timestamp",
+                "value": "1649920583000"
+              },
+              {
+                "name": "orderly-account-id",
+                "value": "6.858456565150415e+75"
+              },
+              {
+                "name": "orderly-key",
+                "value": "ed25519:8tm7dnKYkSc3FzgPuJaw1wztr79eeZpN35nHW5pL5XhX"
+              },
+              {
+                "name": "orderly-signature",
+                "value": "dG4bkKiqG0dUYLzViRZkvbI6Sy239JxAdNMIBxFZ4w030Jofr0ORV06GHtvXZkaZaWUXE+XAU3fnzKN/5fDeBQ=="
+              }
+            ],
+            "params": [
+              {
+                "name": "period_number",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "page",
+                "value": "",
+                "type": "query",
+                "description": "the page you wish to query start from 1"
+              },
+              {
+                "name": "size",
+                "value": "",
+                "type": "query",
+                "description": "the page size you wish to query (max: 500)"
+              }
+            ]
+          },
+          "docs": "\n**Limit: 10 requests per second per account**\n\n`GET /v1/sv/venue_withdrawal_history`\n"
+        },
+        {
+          "info": {
+            "name": "Get Orderly protocol revenue sharing history",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.orderly.org/v1/sv/protocol_revenue_share_history",
+            "headers": [
+              {
+                "name": "orderly-timestamp",
+                "value": "1649920583000"
+              },
+              {
+                "name": "orderly-account-id",
+                "value": "6.858456565150415e+75"
+              },
+              {
+                "name": "orderly-key",
+                "value": "ed25519:8tm7dnKYkSc3FzgPuJaw1wztr79eeZpN35nHW5pL5XhX"
+              },
+              {
+                "name": "orderly-signature",
+                "value": "dG4bkKiqG0dUYLzViRZkvbI6Sy239JxAdNMIBxFZ4w030Jofr0ORV06GHtvXZkaZaWUXE+XAU3fnzKN/5fDeBQ=="
+              }
+            ],
+            "params": [
+              {
+                "name": "page",
+                "value": "",
+                "type": "query",
+                "description": "the page you wish to query start from 1"
+              },
+              {
+                "name": "size",
+                "value": "",
+                "type": "query",
+                "description": "the page size you wish to query (max: 500)"
+              }
+            ]
+          },
+          "docs": "\n**Limit: 10 requests per second per account**\n\n`GET /v1/sv/protocol_revenue_share_history`\n"
+        },
+        {
+          "info": {
+            "name": "Get liquidation fees sharing history",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.orderly.org/v1/sv/liquidation_fees_share_history",
+            "headers": [
+              {
+                "name": "orderly-timestamp",
+                "value": "1649920583000"
+              },
+              {
+                "name": "orderly-account-id",
+                "value": "6.858456565150415e+75"
+              },
+              {
+                "name": "orderly-key",
+                "value": "ed25519:8tm7dnKYkSc3FzgPuJaw1wztr79eeZpN35nHW5pL5XhX"
+              },
+              {
+                "name": "orderly-signature",
+                "value": "dG4bkKiqG0dUYLzViRZkvbI6Sy239JxAdNMIBxFZ4w030Jofr0ORV06GHtvXZkaZaWUXE+XAU3fnzKN/5fDeBQ=="
+              }
+            ],
+            "params": [
+              {
+                "name": "page",
+                "value": "",
+                "type": "query",
+                "description": "the page you wish to query start from 1"
+              },
+              {
+                "name": "size",
+                "value": "",
+                "type": "query",
+                "description": "the page size you wish to query (max: 500)"
+              }
+            ]
+          },
+          "docs": "\n**Limit: 10 requests per second per account**\n\n`GET /v1/sv/liquidation_fees_share_history`\n"
+        },
+        {
+          "info": {
+            "name": "Get internal transfer history",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.orderly.org/v1/sv/internal_transfer_history",
+            "headers": [
+              {
+                "name": "orderly-timestamp",
+                "value": "1649920583000"
+              },
+              {
+                "name": "orderly-account-id",
+                "value": "6.858456565150415e+75"
+              },
+              {
+                "name": "orderly-key",
+                "value": "ed25519:8tm7dnKYkSc3FzgPuJaw1wztr79eeZpN35nHW5pL5XhX"
+              },
+              {
+                "name": "orderly-signature",
+                "value": "dG4bkKiqG0dUYLzViRZkvbI6Sy239JxAdNMIBxFZ4w030Jofr0ORV06GHtvXZkaZaWUXE+XAU3fnzKN/5fDeBQ=="
+              }
+            ],
+            "params": [
+              {
+                "name": "page",
+                "value": "",
+                "type": "query",
+                "description": "the page you wish to query start from 1"
+              },
+              {
+                "name": "size",
+                "value": "",
+                "type": "query",
+                "description": "the page size you wish to query (max: 500)"
+              }
+            ]
+          },
+          "docs": "\n**Limit: 10 requests per second per account**\n\n`GET /v1/sv/internal_transfer_history`\n\nNon-Vault Account to Strategy Provider Account\n"
+        },
+        {
+          "info": {
+            "name": "List order tags for a broker",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.orderly.org/v1/public/broker/order_enums",
+            "params": [
+              {
+                "name": "broker_id",
+                "value": "",
+                "type": "query",
+                "description": "Broker ID"
+              },
+              {
+                "name": "symbol",
+                "value": "",
+                "type": "query",
+                "description": "Filter by symbol"
+              },
+              {
+                "name": "enum_id",
+                "value": "",
+                "type": "query",
+                "description": "Filter by fee config ID (`enum_id`)"
+              },
+              {
+                "name": "include_archived",
+                "value": "",
+                "type": "query",
+                "description": "Include archived order tags"
+              }
+            ]
+          },
+          "docs": "**Limit: 10 requests per 1 second per IP address**\n\n`GET /v1/public/broker/order_enums?broker_id={broker_id}`\n\nList order tag fee configs for a broker.\n"
+        },
+        {
+          "info": {
+            "name": "Get Strategy Provider’s Info",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.orderly.org/v1/public/strategy_vault/sp/info",
+            "params": [
+              {
+                "name": "vault_id",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "wallet_address",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "\n**Limit: 10 requests per second per IP address**\n\n`GET /v1/public/strategy_vault/sp/info`\n"
+        },
+        {
+          "info": {
+            "name": "Get Strategy Provider Transaction History",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.orderly.org/v1/public/strategy_vault/sp/transaction_history",
+            "params": [
+              {
+                "name": "vault_id",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "wallet_address",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "type",
+                "value": "",
+                "type": "query",
+                "description": "`deposit` / `withdrawal` / return all if empty"
+              },
+              {
+                "name": "chain_id",
+                "value": "",
+                "type": "query",
+                "description": "return all if empty"
+              },
+              {
+                "name": "source",
+                "value": "",
+                "type": "query",
+                "description": "`wallet` / `broker_id` / return all if empty"
+              },
+              {
+                "name": "page",
+                "value": "",
+                "type": "query",
+                "description": "the page you wish to query start from 1"
+              },
+              {
+                "name": "size",
+                "value": "",
+                "type": "query",
+                "description": "the page size you wish to query (max: 500)"
+              }
+            ]
+          },
+          "docs": "\n**Limit: 10 requests per second per IP address**\n\n`GET /v1/public/strategy_vault/sp/transaction_history`\n\nView Strategy Provider Transaction History\n"
+        },
+        {
+          "info": {
+            "name": "Get Strategy Provider Claimable Amount",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.orderly.org/v1/public/strategy_vault/sp/claim_info",
+            "params": [
+              {
+                "name": "vault_id",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "wallet_address",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "chain_id",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "\n**Limit: 10 requests per second per IP address**\n\n`GET /v1/public/strategy_vault/sp/claim_info`\n"
+        },
+        {
+          "info": {
+            "name": "Get Strategy Provider Fee History",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.orderly.org/v1/public/strategy_vault/sp/fees_history",
+            "params": [
+              {
+                "name": "vault_id",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "wallet_address",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "page",
+                "value": "",
+                "type": "query",
+                "description": "the page you wish to query start from 1"
+              },
+              {
+                "name": "size",
+                "value": "",
+                "type": "query",
+                "description": "the page size you wish to query (max: 500)"
+              }
+            ]
+          },
+          "docs": "\n**Limit: 10 requests per second per IP address**\n\n`GET /v1/public/strategy_vault/sp/fees_history`\n"
+        },
+        {
+          "info": {
+            "name": "Get Strategy Fund Details",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.orderly.org/v1/public/strategy_vault/fund/info",
+            "params": [
+              {
+                "name": "vault_id",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "wallet_address",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "\n**Limit: 10 requests per second per IP address**\n\n`GET /v1/public/strategy_vault/fund/info`\n\nView Strategy Fund Info\n"
+        },
+        {
+          "info": {
+            "name": "Get Period History and Fund Period Instructions",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.orderly.org/v1/public/strategy_vault/fund/period_info",
+            "params": [
+              {
+                "name": "vault_id",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "wallet_address",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "period_number",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "page",
+                "value": "",
+                "type": "query",
+                "description": "the page you wish to query start from 1"
+              },
+              {
+                "name": "size",
+                "value": "",
+                "type": "query",
+                "description": "the page size you wish to query (max: 500)"
+              }
+            ]
+          },
+          "docs": "\n**Limit: 10 requests per second per IP address**\n\n`GET /v1/public/strategy_vault/fund/period_info`\n"
+        },
+        {
+          "info": {
+            "name": "Get Preview Users Pending Requests",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.orderly.org/v1/public/strategy_vault/fund/pending_transactions",
+            "params": [
+              {
+                "name": "vault_id",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "wallet_address",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "\n**Limit: 10 requests per second per IP address**\n\n`GET /v1/public/strategy_vault/fund/pending_transactions`\n"
+        },
+        {
+          "info": {
+            "name": "Get Strategy Vault Info",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.orderly.org/v1/public/strategy_vault/vault/info",
+            "params": [
+              {
+                "name": "vault_id",
+                "value": "",
+                "type": "query",
+                "description": "return all if empty"
+              },
+              {
+                "name": "status",
+                "value": "",
+                "type": "query",
+                "description": "return all if no filter"
+              },
+              {
+                "name": "broker_ids",
+                "value": "",
+                "type": "query",
+                "description": "can filter multiple broker_id per query."
+              }
+            ]
+          },
+          "docs": "\n**Limit: 10 requests per second per IP address**\n\n`GET /v1/public/strategy_vault/vault/info`\n"
+        },
+        {
+          "info": {
+            "name": "Get Strategy Vault Performance",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.orderly.org/v1/public/strategy_vault/vault/performance",
+            "params": [
+              {
+                "name": "vault_id",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "\n**Limit: 10 requests per second per IP address**\n\n`GET /v1/public/strategy_vault/vault/performance`\n"
+        },
+        {
+          "info": {
+            "name": "Get Strategy Vault TVL/PnL History",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.orderly.org/v1/public/strategy_vault/vault/performance_chart",
+            "params": [
+              {
+                "name": "vault_id",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "type",
+                "value": "",
+                "type": "query",
+                "description": "`PNL` / `TVL`"
+              },
+              {
+                "name": "time_range",
+                "value": "",
+                "type": "query",
+                "description": "`24h` / `7d` / `30d` / `all_time`"
+              }
+            ]
+          },
+          "docs": "\n**Limit: 10 requests per second per IP address**\n\n`GET /v1/public/strategy_vault/vault/performance_chart`\n"
+        },
+        {
+          "info": {
+            "name": "Get Overall Statistics of all Strategy Vaults",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.orderly.org/v1/public/strategy_vault/vault/overall_info",
+            "params": [
+              {
+                "name": "broker_ids",
+                "value": "orderly,woofi_pro,aden",
+                "type": "query",
+                "description": "return all if no filter. can filter multiple broker_id per query"
+              }
+            ]
+          },
+          "docs": "\n**Limit: 10 requests per second per IP address**\n\n`GET /v1/public/strategy_vault/vault/overall_info`\n"
+        },
+        {
+          "info": {
+            "name": "Get User Overall Statistics across Strategy Vaults",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.orderly.org/v1/public/strategy_vault/user/overall_info",
+            "params": [
+              {
+                "name": "wallet_address",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "\n**Limit: 10 requests per second per IP address**\n\n`GET /v1/public/strategy_vault/user/overall_info`\n"
+        },
+        {
+          "info": {
+            "name": "Get Strategy Vault Liquidator History",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.orderly.org/v1/public/strategy_vault/vault/liquidator_history",
+            "params": [
+              {
+                "name": "vault_id",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "symbol",
+                "value": "",
+                "type": "query",
+                "description": "only 1 at a time"
+              },
+              {
+                "name": "page",
+                "value": "",
+                "type": "query",
+                "description": "the page you wish to query start from 1"
+              },
+              {
+                "name": "size",
+                "value": "",
+                "type": "query",
+                "description": "the page size you wish to query (max: 500)"
+              }
+            ]
+          },
+          "docs": "\nLiquidated positions of liquidator\n\n**Limit: 10 requests per second per IP address**\n\n`GET /v1/public/strategy_vault/vault/liquidator_history`\n"
+        },
+        {
+          "info": {
+            "name": "Get Strategy Vault Positions",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.orderly.org/v1/public/strategy_vault/vault/positions",
+            "params": [
+              {
+                "name": "vault_id",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "\n**Limit: 10 requests per second per IP address**\n\n`GET /v1/public/strategy_vault/vault/positions`\n"
+        },
+        {
+          "info": {
+            "name": "Get Strategy Vault Open Orders",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.orderly.org/v1/public/strategy_vault/vault/open_orders",
+            "params": [
+              {
+                "name": "vault_id",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "symbol",
+                "value": "",
+                "type": "query",
+                "description": "one symbol at a time"
+              },
+              {
+                "name": "sort_by",
+                "value": "",
+                "type": "query",
+                "description": "`ascending` / `descending` (default) on updated_time"
+              },
+              {
+                "name": "page",
+                "value": "",
+                "type": "query",
+                "description": "the page you wish to query start from 1"
+              },
+              {
+                "name": "size",
+                "value": "",
+                "type": "query",
+                "description": "the page size you wish to query (max: 500)"
+              }
+            ]
+          },
+          "docs": "\n**Limit: 10 requests per second per IP address**\n\n`GET /v1/public/strategy_vault/vault/open_orders`\n\nIncludes both normal & algo orders\n"
+        },
+        {
+          "info": {
+            "name": "Get Strategy Vault Trade History",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.orderly.org/v1/public/strategy_vault/vault/trade_history",
+            "params": [
+              {
+                "name": "vault_id",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "symbol",
+                "value": "",
+                "type": "query",
+                "description": "one symbol at a time"
+              },
+              {
+                "name": "sort_by",
+                "value": "",
+                "type": "query",
+                "description": "`ascending` / `descending` (default)"
+              },
+              {
+                "name": "page",
+                "value": "",
+                "type": "query",
+                "description": "the page you wish to query start from 1"
+              },
+              {
+                "name": "size",
+                "value": "",
+                "type": "query",
+                "description": "the page size you wish to query (max: 500)"
+              }
+            ]
+          },
+          "docs": "\n**Limit: 10 requests per second per IP address**\n\n`GET /v1/public/strategy_vault/vault/trade_history`\n"
+        },
+        {
+          "info": {
+            "name": "Get Strategy Vault Order History",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.orderly.org/v1/public/strategy_vault/vault/order_history",
+            "params": [
+              {
+                "name": "vault_id",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "symbol",
+                "value": "",
+                "type": "query",
+                "description": "one symbol at a time"
+              },
+              {
+                "name": "sort_by",
+                "value": "",
+                "type": "query",
+                "description": "`ascending` / `descending` (default) on updated_time"
+              },
+              {
+                "name": "page",
+                "value": "",
+                "type": "query",
+                "description": "the page you wish to query start from 1"
+              },
+              {
+                "name": "size",
+                "value": "",
+                "type": "query",
+                "description": "the page size you wish to query (max: 500)"
+              }
+            ]
+          },
+          "docs": "\nInclude both normal & algo orders\n\n**Limit: 10 requests per second per IP address**\n\n`GET /v1/public/strategy_vault/vault/order_history`\n"
+        },
+        {
+          "info": {
+            "name": "Get Liquidity Provider Info",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.orderly.org/v1/public/strategy_vault/lp/info",
+            "params": [
+              {
+                "name": "wallet_address",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "vault_id",
+                "value": "",
+                "type": "query",
+                "description": "return all if empty"
+              }
+            ]
+          },
+          "docs": "\n**Limit: 10 requests per second per IP address**\n\n`GET /v1/public/strategy_vault/lp/info`\n"
+        },
+        {
+          "info": {
+            "name": "Get Liquidity Provider Fee History",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.orderly.org/v1/public/strategy_vault/lp/fees_history",
+            "params": [
+              {
+                "name": "vault_id",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "wallet_address",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "page",
+                "value": "",
+                "type": "query",
+                "description": "the page you wish to query start from 1"
+              },
+              {
+                "name": "size",
+                "value": "",
+                "type": "query",
+                "description": "the page size you wish to query (max: 500)"
+              },
+              {
+                "name": "start_t",
+                "value": "",
+                "type": "query",
+                "description": "start time range that wish to query"
+              },
+              {
+                "name": "end_t",
+                "value": "",
+                "type": "query",
+                "description": "end time range that wish to query"
+              }
+            ]
+          },
+          "docs": "\n**Limit: 10 requests per second per IP address**\n\n`GET /v1/public/strategy_vault/lp/fees_history`\n"
+        },
+        {
+          "info": {
+            "name": "Get Liquidity Provider Performance",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.orderly.org/v1/public/strategy_vault/lp/performance",
+            "params": [
+              {
+                "name": "vault_id",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "wallet_address",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "\n**Limit: 10 requests per second per IP address**\n\n`GET /v1/public/strategy_vault/lp/performance`\n\nLiquidity Provider’s performance in a vault\n"
+        },
+        {
+          "info": {
+            "name": "Get Liquidity Provider TVL/PnL History",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.orderly.org/v1/public/strategy_vault/lp/performance_chart",
+            "params": [
+              {
+                "name": "vault_id",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "wallet_address",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "type",
+                "value": "",
+                "type": "query",
+                "description": "`PNL` / `TVL`"
+              },
+              {
+                "name": "time_range",
+                "value": "",
+                "type": "query",
+                "description": "`24h` / `7d` / `30d` / `all_time`"
+              }
+            ]
+          },
+          "docs": "\n**Limit: 10 requests per second per IP address**\n\n`GET /v1/public/strategy_vault/lp/performance_chart`\n\nLiquidity Provider’s TVL/PnL history in a vault\n"
+        },
+        {
+          "info": {
+            "name": "Get Liquidity Provider Transaction History",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.orderly.org/v1/public/strategy_vault/lp/transaction_history",
+            "params": [
+              {
+                "name": "vault_id",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "wallet_address",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "type",
+                "value": "",
+                "type": "query",
+                "description": "`deposit` / `withdrawal` / return all if empty"
+              },
+              {
+                "name": "chain_id",
+                "value": "",
+                "type": "query",
+                "description": "return all if empty"
+              },
+              {
+                "name": "source",
+                "value": "",
+                "type": "query",
+                "description": "`wallet` / `broker_id` / return all if empty"
+              },
+              {
+                "name": "page",
+                "value": "",
+                "type": "query",
+                "description": "the page you wish to query start from 1"
+              },
+              {
+                "name": "size",
+                "value": "",
+                "type": "query",
+                "description": "the page size you wish to query (max: 500)"
+              }
+            ]
+          },
+          "docs": "\n**Limit: 10 requests per second per IP address**\n\n`GET /v1/public/strategy_vault/lp/transaction_history`\n"
+        },
+        {
+          "info": {
+            "name": "Get Liquidity Provider Claim Info",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.orderly.org/v1/public/strategy_vault/lp/claim_info",
+            "params": [
+              {
+                "name": "vault_id",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "wallet_address",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "chain_id",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "\n**Limit: 10 requests per second per IP address**\n\n`GET /v1/public/strategy_vault/lp/claim_info`\n\nThe claimable asset amount on a chain from the processed withdrawal request(s) of a vault\n"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

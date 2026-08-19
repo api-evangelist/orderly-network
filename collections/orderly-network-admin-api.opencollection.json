@@ -1,0 +1,55 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "EVM admin API",
+    "version": "1.0.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "admin",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Delete stage",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.orderly.org/v1/admin/points/stage",
+            "headers": [
+              {
+                "name": "orderly-timestamp",
+                "value": ""
+              },
+              {
+                "name": "orderly-account-id",
+                "value": ""
+              },
+              {
+                "name": "orderly-key",
+                "value": ""
+              },
+              {
+                "name": "orderly-signature",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "stage_id",
+                "value": "",
+                "type": "query",
+                "description": "Stage ID to delete"
+              }
+            ]
+          },
+          "docs": "**Limit: 10 requests per 1 second per user per IP address**\n\n`DELETE /v1/admin/points/stage`\n\nDelete a specific stage.\n\nOnly callable by Broker Admin.\n"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

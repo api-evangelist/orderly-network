@@ -1,0 +1,168 @@
+{
+  "item": [
+    {
+      "id": "371ab413-0623-4ae3-b954-1b9e612d5c0f",
+      "name": "client",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "dad24a2e-48cc-4626-853d-6fe55767a3fa",
+          "name": "Get user statistics",
+          "request": {
+            "name": "Get user statistics",
+            "description": {
+              "content": "**Limit: 10 requests per 1 second per user per IP address**\n\n`GET /v1/client/points/user_statistics`\n\nReturns daily point statistics for a specific user.\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v1",
+                "client",
+                "points",
+                "user_statistics"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "stage",
+                  "value": "<number>",
+                  "description": "(Required) Filter by Stage"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "(Required) ",
+                "key": "orderly-timestamp",
+                "value": "<string>"
+              },
+              {
+                "disabled": false,
+                "description": "(Required) ",
+                "key": "orderly-account-id",
+                "value": "<string>"
+              },
+              {
+                "disabled": false,
+                "description": "(Required) ",
+                "key": "orderly-key",
+                "value": "<string>"
+              },
+              {
+                "disabled": false,
+                "description": "(Required) ",
+                "key": "orderly-signature",
+                "value": "<string>"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "84e40c75-5bdb-4788-890e-c0e836f48a36",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "client",
+                    "points",
+                    "user_statistics"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "stage",
+                      "value": "<number>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) ",
+                    "key": "orderly-timestamp",
+                    "value": "<string>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) ",
+                    "key": "orderly-account-id",
+                    "value": "<string>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) ",
+                    "key": "orderly-key",
+                    "value": "<string>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) ",
+                    "key": "orderly-signature",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"success\": true,\n  \"timestamp\": 1702989203989,\n  \"data\": {\n    \"stage\": 1,\n    \"address\": \"0x123...\",\n    \"trading_point\": 50,\n    \"pnl_point\": 30,\n    \"referral_point\": 20,\n    \"stage_rank\": 1,\n    \"stage_points\": 100,\n    \"weekly_breakdown\": {\n      \"this_week\": {\n        \"trading_point\": 50,\n        \"pnl_point\": 30,\n        \"referral_point\": 20,\n        \"rank\": 1\n      },\n      \"last_week\": {\n        \"trading_point\": 50,\n        \"pnl_point\": 30,\n        \"referral_point\": 20,\n        \"rank\": 1\n      }\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.orderly.org",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "5afe4e06-047b-4eae-a807-d2fb687f83f3",
+    "name": "EVM admin client API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "",
+      "type": "text/plain"
+    }
+  }
+}

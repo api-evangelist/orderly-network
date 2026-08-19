@@ -1,0 +1,55 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "EVM admin client API",
+    "version": "1.0.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "client",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get user statistics",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.orderly.org/v1/client/points/user_statistics",
+            "headers": [
+              {
+                "name": "orderly-timestamp",
+                "value": ""
+              },
+              {
+                "name": "orderly-account-id",
+                "value": ""
+              },
+              {
+                "name": "orderly-key",
+                "value": ""
+              },
+              {
+                "name": "orderly-signature",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "stage",
+                "value": "",
+                "type": "query",
+                "description": "Filter by Stage"
+              }
+            ]
+          },
+          "docs": "**Limit: 10 requests per 1 second per user per IP address**\n\n`GET /v1/client/points/user_statistics`\n\nReturns daily point statistics for a specific user.\n"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}
