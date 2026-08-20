@@ -41,6 +41,17 @@ tags:
 - Trading
 - Perpetual Futures
 - Derivatives
+- Order Book
+- Web3
+- Blockchain
+- Liquidity
+tags_raw:
+- Company
+- Crypto
+- DeFi
+- Trading
+- Perpetual Futures
+- Derivatives
 - Orderbook
 - Web3
 - Blockchain
@@ -52,6 +63,8 @@ apis:
   humanURL: https://orderly.network/docs/build-on-omnichain/introduction
   baseURL: https://api.orderly.org
   tags:
+  - Admin
+  tags_raw:
   - admin
   properties:
   - type: OpenAPI
@@ -62,6 +75,8 @@ apis:
   humanURL: https://orderly.network/docs/build-on-omnichain/introduction
   baseURL: https://api.orderly.org
   tags:
+  - Clients
+  tags_raw:
   - client
   properties:
   - type: OpenAPI
@@ -72,6 +87,8 @@ apis:
   humanURL: https://orderly.network/docs/build-on-omnichain/introduction
   baseURL: https://api.orderly.org
   tags:
+  - Private
+  tags_raw:
   - private
   properties:
   - type: OpenAPI
@@ -82,6 +99,8 @@ apis:
   humanURL: https://orderly.network/docs/build-on-omnichain/introduction
   baseURL: https://api.orderly.org
   tags:
+  - Public
+  tags_raw:
   - public
   properties:
   - type: OpenAPI
