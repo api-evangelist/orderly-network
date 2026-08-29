@@ -1,10 +1,8 @@
 {
   "provider": "orderly-network",
   "sources": [
-    "orderly-network-admin-api-openapi.yml",
-    "orderly-network-client-api-openapi.yml",
-    "orderly-network-private-api-openapi.yml",
-    "orderly-network-public-api-openapi.yml"
+    "_original/orderly-network-openapi-original.yml",
+    "_original/orderly-network-strategy-vault-openapi-original.yml"
   ],
   "outputs": [
     "orderly-network-admin-api-openapi.yml",
@@ -14,9 +12,21 @@
   ],
   "archived": [],
   "errors": [
-    "orderly-network-private-api-openapi.yml: dangling $ref: #/components/schemas/MetaData"
+    "orderly-network-openapi-original.yml: dangling $ref: #/components/schemas/MetaData"
   ],
   "warnings": [],
-  "notes": [],
-  "skipped": []
+  "notes": [
+    "sourced from openapi/_original/ (2 archived document(s)); previously refined output at the top level was skipped rather than re-split",
+    "orderly-network-openapi-original.yml: upgraded openapi 3.0.1 -> OpenAPI 3.2.0",
+    "orderly-network-openapi-original.yml: declared missing tag: admin",
+    "orderly-network-openapi-original.yml: declared missing tag: client",
+    "orderly-network-strategy-vault-openapi-original.yml: upgraded openapi 3.0.1 -> OpenAPI 3.2.0",
+    "tag 'public' spans 2 source specs (orderly-network-openapi-original.yml, orderly-network-strategy-vault-openapi-original.yml): per-path servers applied"
+  ],
+  "skipped": [
+    "orderly-network-admin-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "orderly-network-client-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "orderly-network-private-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "orderly-network-public-api-openapi.yml: previously refined output, superseded by openapi/_original/"
+  ]
 }

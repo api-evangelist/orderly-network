@@ -1,6 +1,6 @@
-openapi: 3.0.1
+openapi: 3.2.0
 info:
-  title: EVM admin client API
+  title: EVM Client API
   description: ''
   version: 1.0.0
 servers:
@@ -62,19 +62,6 @@ paths:
                 $ref: '#/components/schemas/GetUserStatisticsResponse'
 components:
   schemas:
-    BasicResponse:
-      required:
-      - success
-      type: object
-      properties:
-        success:
-          description: Indicates whether the request was successful.
-          type: boolean
-          example: true
-        timestamp:
-          description: Server timestamp in milliseconds.
-          type: integer
-          example: 1702989203989
     GetUserStatisticsResponse:
       allOf:
       - $ref: '#/components/schemas/BasicResponse'
@@ -137,3 +124,16 @@ components:
                       rank:
                         type: number
                         example: 1
+    BasicResponse:
+      required:
+      - success
+      type: object
+      properties:
+        success:
+          description: Indicates whether the request was successful.
+          type: boolean
+          example: true
+        timestamp:
+          description: Server timestamp in milliseconds.
+          type: integer
+          example: 1702989203989
