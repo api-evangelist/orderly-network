@@ -53,7 +53,7 @@ tags:
 - Trading
 - Perpetual Futures
 - Derivatives
-- Order Book
+- Orderbook
 - Web3
 - Blockchain
 - Liquidity
@@ -87,7 +87,7 @@ apis:
   humanURL: https://orderly.network/docs/build-on-omnichain/introduction
   baseURL: https://api.orderly.org
   tags:
-  - Clients
+  - client
   tags_raw:
   - client
   properties:
