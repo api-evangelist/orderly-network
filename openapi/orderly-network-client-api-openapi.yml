@@ -9,7 +9,7 @@ servers:
 - url: https://testnet-api.orderly.org
   description: Testnet
 tags:
-- name: client
+- name: Client
 paths:
   /v1/client/points/user_statistics:
     get:
@@ -21,11 +21,9 @@ paths:
         `GET /v1/client/points/user_statistics`
 
 
-        Returns daily point statistics for a specific user.
-
-        '
+        Returns daily point statistics for a specific user.'
       tags:
-      - client
+      - Client
       parameters:
       - name: orderly-timestamp
         in: header
@@ -60,8 +58,23 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/GetUserStatisticsResponse'
+      operationId: getV1ClientPointsUserStatistics
+      x-operation-id-source: derived
 components:
   schemas:
+    BasicResponse:
+      required:
+      - success
+      type: object
+      properties:
+        success:
+          description: Indicates whether the request was successful.
+          type: boolean
+          example: true
+        timestamp:
+          description: Server timestamp in milliseconds.
+          type: integer
+          example: 1702989203989
     GetUserStatisticsResponse:
       allOf:
       - $ref: '#/components/schemas/BasicResponse'
@@ -124,16 +137,3 @@ components:
                       rank:
                         type: number
                         example: 1
-    BasicResponse:
-      required:
-      - success
-      type: object
-      properties:
-        success:
-          description: Indicates whether the request was successful.
-          type: boolean
-          example: true
-        timestamp:
-          description: Server timestamp in milliseconds.
-          type: integer
-          example: 1702989203989

@@ -21,7 +21,8 @@
     "orderly-network-openapi-original.yml: declared missing tag: admin",
     "orderly-network-openapi-original.yml: declared missing tag: client",
     "orderly-network-strategy-vault-openapi-original.yml: upgraded openapi 3.0.1 -> OpenAPI 3.2.0",
-    "tag 'public' spans 2 source specs (orderly-network-openapi-original.yml, orderly-network-strategy-vault-openapi-original.yml): per-path servers applied"
+    "tag 'public' spans 2 source specs (orderly-network-openapi-original.yml, orderly-network-strategy-vault-openapi-original.yml): per-path servers applied",
+    "apis.yml register: already-registered"
   ],
   "skipped": [
     "orderly-network-admin-api-openapi.yml: previously refined output, superseded by openapi/_original/",

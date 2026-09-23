@@ -9,7 +9,7 @@ servers:
 - url: https://testnet-api.orderly.org
   description: Testnet
 tags:
-- name: admin
+- name: Admin
 paths:
   /v1/admin/points/stage:
     delete:
@@ -24,11 +24,9 @@ paths:
         Delete a specific stage.
 
 
-        Only callable by Broker Admin.
-
-        '
+        Only callable by Broker Admin.'
       tags:
-      - admin
+      - Admin
       parameters:
       - name: orderly-timestamp
         in: header
@@ -63,6 +61,8 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/BasicResponse'
+      operationId: deleteV1AdminPointsStage
+      x-operation-id-source: derived
 components:
   schemas:
     BasicResponse:
