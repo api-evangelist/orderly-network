@@ -57,6 +57,7 @@ tags:
 - Web3
 - Blockchain
 - Liquidity
+- Real-Time
 tags_raw:
 - Company
 - Crypto
@@ -68,9 +69,10 @@ tags_raw:
 - Web3
 - Blockchain
 - Liquidity
+- Real-Time
 apis:
 - aid: orderly-network:orderly-network-admin-api
-  name: Orderly Network admin API
+  name: Orderly Network Admin API
   description: The admin API from Orderly Network — 1 operation(s) for admin.
   humanURL: https://orderly.network/docs/build-on-omnichain/introduction
   baseURL: https://api.orderly.org
@@ -82,7 +84,7 @@ apis:
   - type: OpenAPI
     url: openapi/orderly-network-admin-api-openapi.yml
 - aid: orderly-network:orderly-network-client-api
-  name: Orderly Network client API
+  name: Orderly Network Client API
   description: The client API from Orderly Network — 1 operation(s) for client.
   humanURL: https://orderly.network/docs/build-on-omnichain/introduction
   baseURL: https://api.orderly.org
@@ -94,7 +96,7 @@ apis:
   - type: OpenAPI
     url: openapi/orderly-network-client-api-openapi.yml
 - aid: orderly-network:orderly-network-private-api
-  name: Orderly Network private API
+  name: Orderly Network Private API
   description: The private API from Orderly Network — 137 operation(s) for private.
   humanURL: https://orderly.network/docs/build-on-omnichain/introduction
   baseURL: https://api.orderly.org
@@ -106,7 +108,7 @@ apis:
   - type: OpenAPI
     url: openapi/orderly-network-private-api-openapi.yml
 - aid: orderly-network:orderly-network-public-api
-  name: Orderly Network public API
+  name: Orderly Network Public API
   description: The public API from Orderly Network — 97 operation(s) for public.
   humanURL: https://orderly.network/docs/build-on-omnichain/introduction
   baseURL: https://api.orderly.org
