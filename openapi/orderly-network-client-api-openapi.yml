@@ -62,6 +62,19 @@ paths:
       x-operation-id-source: derived
 components:
   schemas:
+    BasicResponse:
+      required:
+      - success
+      type: object
+      properties:
+        success:
+          description: Indicates whether the request was successful.
+          type: boolean
+          example: true
+        timestamp:
+          description: Server timestamp in milliseconds.
+          type: integer
+          example: 1702989203989
     GetUserStatisticsResponse:
       allOf:
       - $ref: '#/components/schemas/BasicResponse'
@@ -124,16 +137,3 @@ components:
                       rank:
                         type: number
                         example: 1
-    BasicResponse:
-      required:
-      - success
-      type: object
-      properties:
-        success:
-          description: Indicates whether the request was successful.
-          type: boolean
-          example: true
-        timestamp:
-          description: Server timestamp in milliseconds.
-          type: integer
-          example: 1702989203989
