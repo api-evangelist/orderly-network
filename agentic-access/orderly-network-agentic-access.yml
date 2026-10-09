@@ -1,23 +1,51 @@
-generated: '2026-07-20'
+generated: '2026-09-23'
 method: generated
-source: openapi/orderly-network-openapi-original.yml, openapi/orderly-network-strategy-vault-openapi-original.yml
+source: openapi/orderly-network-admin-api-openapi.yml, openapi/orderly-network-client-api-openapi.yml,
+  openapi/orderly-network-private-api-openapi.yml, openapi/orderly-network-public-api-openapi.yml
 description: Recommended x-agentic-access execution contracts, classified heuristically from
   the OpenAPI. A governance starting point for exposing this API to AI agents — review and bind
   audience per deployment. See research/curity/agentic-governance/.
 summary:
   operations: 248
   by_action_class:
-    acting: 67
-    connected: 181
+    acting: 66
+    connected: 182
   by_consequence:
-    write: 35
-    read: 181
+    write: 34
+    read: 182
     physical: 28
     safety-critical: 4
   human_in_the_loop_required: 4
 operations:
+- path: /v1/admin/points/stage
+  method: delete
+  operationId: deleteV1AdminPointsStage
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /v1/client/points/user_statistics
+  method: get
+  operationId: getV1ClientPointsUserStatistics
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
 - path: /v1/client/add_sub_account
   method: post
+  operationId: postV1ClientAddSubAccount
   x-agentic-access:
     action-class: acting
     consequence: write
@@ -33,6 +61,7 @@ operations:
     audit: required
 - path: /v1/client/sub_account
   method: get
+  operationId: getV1ClientSubAccount
   x-agentic-access:
     action-class: connected
     consequence: read
@@ -42,6 +71,7 @@ operations:
     audit: none
 - path: /v1/client/update_sub_account
   method: post
+  operationId: postV1ClientUpdateSubAccount
   x-agentic-access:
     action-class: acting
     consequence: write
@@ -57,6 +87,7 @@ operations:
     audit: required
 - path: /v1/client/aggregate/positions
   method: get
+  operationId: getV1ClientAggregatePositions
   x-agentic-access:
     action-class: connected
     consequence: read
@@ -66,6 +97,7 @@ operations:
     audit: none
 - path: /v1/client/aggregate/holding
   method: get
+  operationId: getV1ClientAggregateHolding
   x-agentic-access:
     action-class: connected
     consequence: read
@@ -75,6 +107,7 @@ operations:
     audit: none
 - path: /v1/sub_account_settle_pnl
   method: post
+  operationId: postV1SubAccountSettlePnl
   x-agentic-access:
     action-class: acting
     consequence: write
@@ -88,242 +121,9 @@ operations:
       - abnormal
       - high-value
     audit: required
-- path: /v1/public/futures
-  method: get
-  x-agentic-access:
-    action-class: connected
-    consequence: read
-    subject: optional
-    token:
-      max-ttl: 3600
-    audit: none
-- path: /v1/ip_info
-  method: get
-  x-agentic-access:
-    action-class: connected
-    consequence: read
-    subject: optional
-    token:
-      max-ttl: 3600
-    audit: none
-- path: /v1/public/futures_market
-  method: get
-  x-agentic-access:
-    action-class: connected
-    consequence: read
-    subject: optional
-    token:
-      max-ttl: 3600
-    audit: none
-- path: /v1/public/balance/stats
-  method: get
-  x-agentic-access:
-    action-class: connected
-    consequence: read
-    subject: optional
-    token:
-      max-ttl: 3600
-    audit: none
-- path: /v1/public/market_trades
-  method: get
-  x-agentic-access:
-    action-class: connected
-    consequence: read
-    subject: optional
-    token:
-      max-ttl: 3600
-    audit: none
-- path: /v1/public/market_info/price_changes
-  method: get
-  x-agentic-access:
-    action-class: connected
-    consequence: read
-    subject: optional
-    token:
-      max-ttl: 3600
-    audit: none
-- path: /v1/public/market_info/traders_open_interests
-  method: get
-  x-agentic-access:
-    action-class: connected
-    consequence: read
-    subject: optional
-    token:
-      max-ttl: 3600
-    audit: none
-- path: /v1/public/market_info/history_charts
-  method: get
-  x-agentic-access:
-    action-class: connected
-    consequence: read
-    subject: optional
-    token:
-      max-ttl: 3600
-    audit: none
-- path: /v1/public/market_info/funding_history
-  method: get
-  x-agentic-access:
-    action-class: connected
-    consequence: read
-    subject: optional
-    token:
-      max-ttl: 3600
-    audit: none
-- path: /v1/public/volume/stats
-  method: get
-  x-agentic-access:
-    action-class: connected
-    consequence: read
-    subject: optional
-    token:
-      max-ttl: 3600
-    audit: none
-- path: /v1/public/broker/stats
-  method: get
-  x-agentic-access:
-    action-class: connected
-    consequence: read
-    subject: optional
-    token:
-      max-ttl: 3600
-    audit: none
-- path: /v1/public/broker/name
-  method: get
-  x-agentic-access:
-    action-class: connected
-    consequence: read
-    subject: optional
-    token:
-      max-ttl: 3600
-    audit: none
-- path: /v1/public/funding_rates
-  method: get
-  x-agentic-access:
-    action-class: connected
-    consequence: read
-    subject: optional
-    token:
-      max-ttl: 3600
-    audit: none
-- path: /v1/public/funding_rate/{symbol}
-  method: get
-  x-agentic-access:
-    action-class: connected
-    consequence: read
-    subject: optional
-    token:
-      max-ttl: 3600
-    audit: none
-- path: /v1/public/funding_rate_history
-  method: get
-  x-agentic-access:
-    action-class: connected
-    consequence: read
-    subject: optional
-    token:
-      max-ttl: 3600
-    audit: none
-- path: /v1/public/futures/{symbol}
-  method: get
-  x-agentic-access:
-    action-class: connected
-    consequence: read
-    subject: optional
-    token:
-      max-ttl: 3600
-    audit: none
-- path: /v1/public/liquidation
-  method: get
-  x-agentic-access:
-    action-class: connected
-    consequence: read
-    subject: optional
-    token:
-      max-ttl: 3600
-    audit: none
-- path: /v1/public/liquidated_positions
-  method: get
-  x-agentic-access:
-    action-class: connected
-    consequence: read
-    subject: optional
-    token:
-      max-ttl: 3600
-    audit: none
-- path: /v1/public/info/{symbol}
-  method: get
-  x-agentic-access:
-    action-class: connected
-    consequence: read
-    subject: optional
-    token:
-      max-ttl: 3600
-    audit: none
-- path: /v1/public/token
-  method: get
-  x-agentic-access:
-    action-class: connected
-    consequence: read
-    subject: optional
-    token:
-      max-ttl: 3600
-    audit: none
-- path: /v1/public/info
-  method: get
-  x-agentic-access:
-    action-class: connected
-    consequence: read
-    subject: optional
-    token:
-      max-ttl: 3600
-    audit: none
-- path: /v1/public/index_price_source
-  method: get
-  x-agentic-access:
-    action-class: connected
-    consequence: read
-    subject: optional
-    token:
-      max-ttl: 3600
-    audit: none
-- path: /v1/public/insurancefund
-  method: get
-  x-agentic-access:
-    action-class: connected
-    consequence: read
-    subject: optional
-    token:
-      max-ttl: 3600
-    audit: none
-- path: /v1/tv/config
-  method: get
-  x-agentic-access:
-    action-class: connected
-    consequence: read
-    subject: optional
-    token:
-      max-ttl: 3600
-    audit: none
-- path: /v1/tv/history
-  method: get
-  x-agentic-access:
-    action-class: connected
-    consequence: read
-    subject: optional
-    token:
-      max-ttl: 3600
-    audit: none
-- path: /v1/tv/symbol_info
-  method: get
-  x-agentic-access:
-    action-class: connected
-    consequence: read
-    subject: optional
-    token:
-      max-ttl: 3600
-    audit: none
 - path: /v1/positions
   method: get
+  operationId: getV1Positions
   x-agentic-access:
     action-class: connected
     consequence: read
@@ -333,6 +133,7 @@ operations:
     audit: none
 - path: /v1/positions_lite
   method: get
+  operationId: getV1PositionsLite
   x-agentic-access:
     action-class: connected
     consequence: read
@@ -342,6 +143,7 @@ operations:
     audit: none
 - path: /v1/position/{symbol}
   method: get
+  operationId: getV1PositionBySymbol
   x-agentic-access:
     action-class: connected
     consequence: read
@@ -351,6 +153,7 @@ operations:
     audit: none
 - path: /v1/position_history
   method: get
+  operationId: getV1PositionHistory
   x-agentic-access:
     action-class: connected
     consequence: read
@@ -360,6 +163,7 @@ operations:
     audit: none
 - path: /v1/funding_fee/history
   method: get
+  operationId: getV1FundingFeeHistory
   x-agentic-access:
     action-class: connected
     consequence: read
@@ -369,6 +173,7 @@ operations:
     audit: none
 - path: /v1/client/leverage
   method: get
+  operationId: getV1ClientLeverage
   x-agentic-access:
     action-class: connected
     consequence: read
@@ -378,6 +183,7 @@ operations:
     audit: none
 - path: /v1/client/leverages
   method: get
+  operationId: getV1ClientLeverages
   x-agentic-access:
     action-class: connected
     consequence: read
@@ -387,6 +193,7 @@ operations:
     audit: none
 - path: /v1/client/leverages
   method: post
+  operationId: postV1ClientLeverages
   x-agentic-access:
     action-class: acting
     consequence: write
@@ -400,17 +207,9 @@ operations:
       - abnormal
       - high-value
     audit: required
-- path: /v1/public/leverage
-  method: get
-  x-agentic-access:
-    action-class: connected
-    consequence: read
-    subject: optional
-    token:
-      max-ttl: 3600
-    audit: none
 - path: /v1/liquidations
   method: get
+  operationId: getV1Liquidations
   x-agentic-access:
     action-class: connected
     consequence: read
@@ -420,6 +219,7 @@ operations:
     audit: none
 - path: /v1/liquidation
   method: post
+  operationId: postV1Liquidation
   x-agentic-access:
     action-class: acting
     consequence: write
@@ -435,6 +235,7 @@ operations:
     audit: required
 - path: /v1/client/liquidator_liquidations
   method: get
+  operationId: getV1ClientLiquidatorLiquidations
   x-agentic-access:
     action-class: connected
     consequence: read
@@ -444,6 +245,7 @@ operations:
     audit: none
 - path: /v1/order
   method: post
+  operationId: postV1Order
   x-agentic-access:
     action-class: acting
     consequence: physical
@@ -461,6 +263,7 @@ operations:
     audit: required
 - path: /v1/order
   method: delete
+  operationId: deleteV1Order
   x-agentic-access:
     action-class: acting
     consequence: physical
@@ -478,6 +281,7 @@ operations:
     audit: required
 - path: /v1/order
   method: put
+  operationId: putV1Order
   x-agentic-access:
     action-class: acting
     consequence: physical
@@ -495,6 +299,7 @@ operations:
     audit: required
 - path: /v1/order/{order_id}
   method: get
+  operationId: getV1OrderByOrderId
   x-agentic-access:
     action-class: connected
     consequence: read
@@ -504,6 +309,7 @@ operations:
     audit: none
 - path: /v1/trades
   method: get
+  operationId: getV1Trades
   x-agentic-access:
     action-class: connected
     consequence: read
@@ -513,6 +319,7 @@ operations:
     audit: none
 - path: /v1/client/holding
   method: get
+  operationId: getV1ClientHolding
   x-agentic-access:
     action-class: connected
     consequence: read
@@ -522,6 +329,7 @@ operations:
     audit: none
 - path: /v1/account_info
   method: get
+  operationId: getV1AccountInfo
   x-agentic-access:
     action-class: connected
     consequence: read
@@ -531,6 +339,7 @@ operations:
     audit: none
 - path: /v1/client/margin_mode
   method: post
+  operationId: postV1ClientMarginMode
   x-agentic-access:
     action-class: acting
     consequence: write
@@ -546,6 +355,7 @@ operations:
     audit: required
 - path: /v1/position_margin
   method: post
+  operationId: postV1PositionMargin
   x-agentic-access:
     action-class: acting
     consequence: write
@@ -561,6 +371,7 @@ operations:
     audit: required
 - path: /v1/client/margin_modes
   method: get
+  operationId: getV1ClientMarginModes
   x-agentic-access:
     action-class: connected
     consequence: read
@@ -570,6 +381,7 @@ operations:
     audit: none
 - path: /v1/client/info
   method: get
+  operationId: getV1ClientInfo
   x-agentic-access:
     action-class: connected
     consequence: read
@@ -579,6 +391,7 @@ operations:
     audit: none
 - path: /v1/orders
   method: get
+  operationId: getV1Orders
   x-agentic-access:
     action-class: connected
     consequence: read
@@ -588,6 +401,7 @@ operations:
     audit: none
 - path: /v1/orders
   method: delete
+  operationId: deleteV1Orders
   x-agentic-access:
     action-class: acting
     consequence: physical
@@ -605,6 +419,7 @@ operations:
     audit: required
 - path: /v1/client/statistics
   method: get
+  operationId: getV1ClientStatistics
   x-agentic-access:
     action-class: connected
     consequence: read
@@ -614,6 +429,7 @@ operations:
     audit: none
 - path: /v1/asset/history
   method: get
+  operationId: getV1AssetHistory
   x-agentic-access:
     action-class: connected
     consequence: read
@@ -623,6 +439,7 @@ operations:
     audit: none
 - path: /v1/client/asset/receiver_address
   method: get
+  operationId: getV1ClientAssetReceiverAddress
   x-agentic-access:
     action-class: connected
     consequence: read
@@ -632,6 +449,7 @@ operations:
     audit: none
 - path: /v1/client/asset/receiver_events
   method: get
+  operationId: getV1ClientAssetReceiverEvents
   x-agentic-access:
     action-class: connected
     consequence: read
@@ -641,6 +459,7 @@ operations:
     audit: none
 - path: /v1/claim_insurance_fund
   method: post
+  operationId: postV1ClaimInsuranceFund
   x-agentic-access:
     action-class: acting
     consequence: write
@@ -648,92 +467,6 @@ operations:
     audience: null
     token:
       max-ttl: 900
-    escalation:
-      human-in-the-loop: conditional
-      triggers:
-      - abnormal
-      - high-value
-    audit: required
-- path: /v1/public/system_info
-  method: get
-  x-agentic-access:
-    action-class: connected
-    consequence: read
-    subject: optional
-    token:
-      max-ttl: 3600
-    audit: none
-- path: /v1/registration_nonce
-  method: get
-  x-agentic-access:
-    action-class: connected
-    consequence: read
-    subject: optional
-    token:
-      max-ttl: 3600
-    audit: none
-- path: /v1/get_account
-  method: get
-  x-agentic-access:
-    action-class: connected
-    consequence: read
-    subject: optional
-    token:
-      max-ttl: 3600
-    audit: none
-- path: /v1/get_all_accounts
-  method: get
-  x-agentic-access:
-    action-class: connected
-    consequence: read
-    subject: optional
-    token:
-      max-ttl: 3600
-    audit: none
-- path: /v1/get_broker
-  method: get
-  x-agentic-access:
-    action-class: connected
-    consequence: read
-    subject: optional
-    token:
-      max-ttl: 3600
-    audit: none
-- path: /v1/register_account
-  method: post
-  x-agentic-access:
-    action-class: acting
-    consequence: write
-    subject: required
-    audience: null
-    token:
-      max-ttl: 900
-    escalation:
-      human-in-the-loop: conditional
-      triggers:
-      - abnormal
-      - high-value
-    audit: required
-- path: /v1/get_orderly_key
-  method: get
-  x-agentic-access:
-    action-class: connected
-    consequence: read
-    subject: optional
-    token:
-      max-ttl: 3600
-    audit: none
-- path: /v1/orderly_key
-  method: post
-  x-agentic-access:
-    action-class: acting
-    consequence: physical
-    subject: required
-    audience: null
-    token:
-      max-ttl: 300
-      exchange: true
-      purpose-required: true
     escalation:
       human-in-the-loop: conditional
       triggers:
@@ -742,6 +475,7 @@ operations:
     audit: required
 - path: /v1/client/remove_orderly_key
   method: post
+  operationId: postV1ClientRemoveOrderlyKey
   x-agentic-access:
     action-class: acting
     consequence: physical
@@ -757,26 +491,9 @@ operations:
       - abnormal
       - high-value
     audit: required
-- path: /v1/public/config
-  method: get
-  x-agentic-access:
-    action-class: connected
-    consequence: read
-    subject: optional
-    token:
-      max-ttl: 3600
-    audit: none
-- path: /v1/public/chain_info
-  method: get
-  x-agentic-access:
-    action-class: connected
-    consequence: read
-    subject: optional
-    token:
-      max-ttl: 3600
-    audit: none
 - path: /v1/order/cancel_all_after
   method: post
+  operationId: postV1OrderCancelAllAfter
   x-agentic-access:
     action-class: acting
     consequence: physical
@@ -794,6 +511,7 @@ operations:
     audit: required
 - path: /v1/batch-order
   method: post
+  operationId: postV1BatchOrder
   x-agentic-access:
     action-class: acting
     consequence: physical
@@ -811,6 +529,7 @@ operations:
     audit: required
 - path: /v1/batch-order
   method: delete
+  operationId: deleteV1BatchOrder
   x-agentic-access:
     action-class: acting
     consequence: physical
@@ -828,6 +547,7 @@ operations:
     audit: required
 - path: /v1/client/order
   method: delete
+  operationId: deleteV1ClientOrder
   x-agentic-access:
     action-class: acting
     consequence: physical
@@ -845,6 +565,7 @@ operations:
     audit: required
 - path: /v1/client/batch-order
   method: delete
+  operationId: deleteV1ClientBatchOrder
   x-agentic-access:
     action-class: acting
     consequence: physical
@@ -862,6 +583,7 @@ operations:
     audit: required
 - path: /v1/client/order/{client_order_id}
   method: get
+  operationId: getV1ClientOrderByClientOrderId
   x-agentic-access:
     action-class: connected
     consequence: read
@@ -871,24 +593,7 @@ operations:
     audit: none
 - path: /v1/orderbook/{symbol}
   method: get
-  x-agentic-access:
-    action-class: connected
-    consequence: read
-    subject: optional
-    token:
-      max-ttl: 3600
-    audit: none
-- path: /v1/kline
-  method: get
-  x-agentic-access:
-    action-class: connected
-    consequence: read
-    subject: optional
-    token:
-      max-ttl: 3600
-    audit: none
-- path: /v1/tv/kline_history
-  method: get
+  operationId: getV1OrderbookBySymbol
   x-agentic-access:
     action-class: connected
     consequence: read
@@ -898,6 +603,7 @@ operations:
     audit: none
 - path: /v1/order/{order_id}/trades
   method: get
+  operationId: getV1OrderByOrderIdTrades
   x-agentic-access:
     action-class: connected
     consequence: read
@@ -907,6 +613,7 @@ operations:
     audit: none
 - path: /v1/trade/{trade_id}
   method: get
+  operationId: getV1TradeByTradeId
   x-agentic-access:
     action-class: connected
     consequence: read
@@ -916,6 +623,7 @@ operations:
     audit: none
 - path: /v1/client/maintenance_config
   method: post
+  operationId: postV1ClientMaintenanceConfig
   x-agentic-access:
     action-class: acting
     consequence: write
@@ -931,6 +639,7 @@ operations:
     audit: required
 - path: /v1/volume/user/stats
   method: get
+  operationId: getV1VolumeUserStats
   x-agentic-access:
     action-class: connected
     consequence: read
@@ -940,6 +649,7 @@ operations:
     audit: none
 - path: /v1/volume/user/daily
   method: get
+  operationId: getV1VolumeUserDaily
   x-agentic-access:
     action-class: connected
     consequence: read
@@ -949,6 +659,7 @@ operations:
     audit: none
 - path: /v1/withdraw_nonce
   method: get
+  operationId: getV1WithdrawNonce
   x-agentic-access:
     action-class: connected
     consequence: read
@@ -958,6 +669,7 @@ operations:
     audit: none
 - path: /v1/settle_nonce
   method: get
+  operationId: getV1SettleNonce
   x-agentic-access:
     action-class: connected
     consequence: read
@@ -967,6 +679,7 @@ operations:
     audit: none
 - path: /v1/withdraw_request
   method: post
+  operationId: postV1WithdrawRequest
   x-agentic-access:
     action-class: acting
     consequence: physical
@@ -984,6 +697,7 @@ operations:
     audit: required
 - path: /v1/settle_pnl
   method: post
+  operationId: postV1SettlePnl
   x-agentic-access:
     action-class: acting
     consequence: write
@@ -999,6 +713,7 @@ operations:
     audit: required
 - path: /v1/pnl_settlement/history
   method: get
+  operationId: getV1PnlSettlementHistory
   x-agentic-access:
     action-class: connected
     consequence: read
@@ -1008,6 +723,7 @@ operations:
     audit: none
 - path: /v1/internal_transfer
   method: post
+  operationId: postV1InternalTransfer
   x-agentic-access:
     action-class: acting
     consequence: physical
@@ -1025,6 +741,7 @@ operations:
     audit: required
 - path: /v2/internal_transfer
   method: post
+  operationId: postV2InternalTransfer
   x-agentic-access:
     action-class: acting
     consequence: physical
@@ -1042,6 +759,7 @@ operations:
     audit: required
 - path: /v1/transfer_nonce
   method: get
+  operationId: getV1TransferNonce
   x-agentic-access:
     action-class: connected
     consequence: read
@@ -1051,6 +769,7 @@ operations:
     audit: none
 - path: /v1/internal_transfer_history
   method: get
+  operationId: getV1InternalTransferHistory
   x-agentic-access:
     action-class: connected
     consequence: read
@@ -1060,6 +779,7 @@ operations:
     audit: none
 - path: /v1/client/key_info
   method: get
+  operationId: getV1ClientKeyInfo
   x-agentic-access:
     action-class: connected
     consequence: read
@@ -1069,6 +789,7 @@ operations:
     audit: none
 - path: /v1/client/orderly_key_ip_restriction
   method: get
+  operationId: getV1ClientOrderlyKeyIpRestriction
   x-agentic-access:
     action-class: connected
     consequence: read
@@ -1078,6 +799,7 @@ operations:
     audit: none
 - path: /v1/client/set_orderly_key_ip_restriction
   method: post
+  operationId: postV1ClientSetOrderlyKeyIpRestriction
   x-agentic-access:
     action-class: acting
     consequence: physical
@@ -1095,6 +817,7 @@ operations:
     audit: required
 - path: /v1/client/reset_orderly_key_ip_restriction
   method: post
+  operationId: postV1ClientResetOrderlyKeyIpRestriction
   x-agentic-access:
     action-class: acting
     consequence: safety-critical
@@ -1110,6 +833,7 @@ operations:
     audit: required
 - path: /v1/notification/inbox/notifications
   method: get
+  operationId: getV1NotificationInboxNotifications
   x-agentic-access:
     action-class: connected
     consequence: read
@@ -1119,6 +843,7 @@ operations:
     audit: none
 - path: /v1/notification/inbox/unread
   method: get
+  operationId: getV1NotificationInboxUnread
   x-agentic-access:
     action-class: connected
     consequence: read
@@ -1128,6 +853,7 @@ operations:
     audit: none
 - path: /v1/notification/inbox/mark_read
   method: post
+  operationId: postV1NotificationInboxMarkRead
   x-agentic-access:
     action-class: acting
     consequence: write
@@ -1143,30 +869,7 @@ operations:
     audit: required
 - path: /v1/notification/inbox/mark_read_all
   method: post
-  x-agentic-access:
-    action-class: acting
-    consequence: write
-    subject: required
-    audience: null
-    token:
-      max-ttl: 900
-    escalation:
-      human-in-the-loop: conditional
-      triggers:
-      - abnormal
-      - high-value
-    audit: required
-- path: /v1/public/vault_balance
-  method: get
-  x-agentic-access:
-    action-class: connected
-    consequence: read
-    subject: optional
-    token:
-      max-ttl: 3600
-    audit: none
-- path: /v1/faucet/usdc
-  method: post
+  operationId: postV1NotificationInboxMarkReadAll
   x-agentic-access:
     action-class: acting
     consequence: write
@@ -1182,6 +885,7 @@ operations:
     audit: required
 - path: /v1/algo/order
   method: post
+  operationId: postV1AlgoOrder
   x-agentic-access:
     action-class: acting
     consequence: physical
@@ -1199,6 +903,7 @@ operations:
     audit: required
 - path: /v1/algo/order
   method: put
+  operationId: putV1AlgoOrder
   x-agentic-access:
     action-class: acting
     consequence: physical
@@ -1216,6 +921,7 @@ operations:
     audit: required
 - path: /v1/algo/order
   method: delete
+  operationId: deleteV1AlgoOrder
   x-agentic-access:
     action-class: acting
     consequence: physical
@@ -1233,6 +939,7 @@ operations:
     audit: required
 - path: /v1/algo/client/order
   method: delete
+  operationId: deleteV1AlgoClientOrder
   x-agentic-access:
     action-class: acting
     consequence: physical
@@ -1250,6 +957,7 @@ operations:
     audit: required
 - path: /v1/algo/orders
   method: delete
+  operationId: deleteV1AlgoOrders
   x-agentic-access:
     action-class: acting
     consequence: physical
@@ -1267,6 +975,7 @@ operations:
     audit: required
 - path: /v1/algo/orders
   method: get
+  operationId: getV1AlgoOrders
   x-agentic-access:
     action-class: connected
     consequence: read
@@ -1276,6 +985,7 @@ operations:
     audit: none
 - path: /v1/algo/order/{order_id}
   method: get
+  operationId: getV1AlgoOrderByOrderId
   x-agentic-access:
     action-class: connected
     consequence: read
@@ -1285,6 +995,7 @@ operations:
     audit: none
 - path: /v1/algo/client/order/{client_order_id}
   method: get
+  operationId: getV1AlgoClientOrderByClientOrderId
   x-agentic-access:
     action-class: connected
     consequence: read
@@ -1294,24 +1005,7 @@ operations:
     audit: none
 - path: /v1/algo/order/{order_id}/trades
   method: get
-  x-agentic-access:
-    action-class: connected
-    consequence: read
-    subject: optional
-    token:
-      max-ttl: 3600
-    audit: none
-- path: /v1/public/account
-  method: get
-  x-agentic-access:
-    action-class: connected
-    consequence: read
-    subject: optional
-    token:
-      max-ttl: 3600
-    audit: none
-- path: /v1/public/announcement
-  method: get
+  operationId: getV1AlgoOrderByOrderIdTrades
   x-agentic-access:
     action-class: connected
     consequence: read
@@ -1321,6 +1015,7 @@ operations:
     audit: none
 - path: /v1/volume/broker/daily
   method: get
+  operationId: getV1VolumeBrokerDaily
   x-agentic-access:
     action-class: connected
     consequence: read
@@ -1330,6 +1025,7 @@ operations:
     audit: none
 - path: /v1/broker/leaderboard/daily
   method: get
+  operationId: getV1BrokerLeaderboardDaily
   x-agentic-access:
     action-class: connected
     consequence: read
@@ -1339,6 +1035,7 @@ operations:
     audit: none
 - path: /v1/broker/broker_info
   method: get
+  operationId: getV1BrokerBrokerInfo
   x-agentic-access:
     action-class: connected
     consequence: read
@@ -1348,6 +1045,7 @@ operations:
     audit: none
 - path: /v1/broker/daily_fee_revenue
   method: get
+  operationId: getV1BrokerDailyFeeRevenue
   x-agentic-access:
     action-class: connected
     consequence: read
@@ -1357,6 +1055,7 @@ operations:
     audit: none
 - path: /v1/client/statistics/daily
   method: get
+  operationId: getV1ClientStatisticsDaily
   x-agentic-access:
     action-class: connected
     consequence: read
@@ -1366,6 +1065,7 @@ operations:
     audit: none
 - path: /v1/broker/user_info
   method: get
+  operationId: getV1BrokerUserInfo
   x-agentic-access:
     action-class: connected
     consequence: read
@@ -1375,6 +1075,7 @@ operations:
     audit: none
 - path: /v1/broker/fee_rate/set
   method: post
+  operationId: postV1BrokerFeeRateSet
   x-agentic-access:
     action-class: acting
     consequence: write
@@ -1390,6 +1091,7 @@ operations:
     audit: required
 - path: /v1/broker/fee_rate/set_default
   method: post
+  operationId: postV1BrokerFeeRateSetDefault
   x-agentic-access:
     action-class: acting
     consequence: safety-critical
@@ -1405,6 +1107,7 @@ operations:
     audit: required
 - path: /v1/broker/fee_rate/default
   method: post
+  operationId: postV1BrokerFeeRateDefault
   x-agentic-access:
     action-class: acting
     consequence: write
@@ -1420,6 +1123,7 @@ operations:
     audit: required
 - path: /v1/broker/fee_rate/default
   method: get
+  operationId: getV1BrokerFeeRateDefault
   x-agentic-access:
     action-class: connected
     consequence: read
@@ -1429,6 +1133,7 @@ operations:
     audit: none
 - path: /v1/referral/create
   method: post
+  operationId: postV1ReferralCreate
   x-agentic-access:
     action-class: acting
     consequence: write
@@ -1444,24 +1149,7 @@ operations:
     audit: required
 - path: /v1/referral/admin_info
   method: get
-  x-agentic-access:
-    action-class: connected
-    consequence: read
-    subject: optional
-    token:
-      max-ttl: 3600
-    audit: none
-- path: /v1/public/referral/check_ref_code
-  method: get
-  x-agentic-access:
-    action-class: connected
-    consequence: read
-    subject: optional
-    token:
-      max-ttl: 3600
-    audit: none
-- path: /v1/public/referral/verify_ref_code
-  method: get
+  operationId: getV1ReferralAdminInfo
   x-agentic-access:
     action-class: connected
     consequence: read
@@ -1471,6 +1159,7 @@ operations:
     audit: none
 - path: /v1/referral/update
   method: post
+  operationId: postV1ReferralUpdate
   x-agentic-access:
     action-class: acting
     consequence: write
@@ -1486,6 +1175,7 @@ operations:
     audit: required
 - path: /v1/referral/bind
   method: post
+  operationId: postV1ReferralBind
   x-agentic-access:
     action-class: acting
     consequence: write
@@ -1501,6 +1191,7 @@ operations:
     audit: required
 - path: /v1/referral/info
   method: get
+  operationId: getV1ReferralInfo
   x-agentic-access:
     action-class: connected
     consequence: read
@@ -1510,6 +1201,7 @@ operations:
     audit: none
 - path: /v1/referral/referral_history
   method: get
+  operationId: getV1ReferralReferralHistory
   x-agentic-access:
     action-class: connected
     consequence: read
@@ -1519,6 +1211,7 @@ operations:
     audit: none
 - path: /v1/referral/rebate_summary
   method: get
+  operationId: getV1ReferralRebateSummary
   x-agentic-access:
     action-class: connected
     consequence: read
@@ -1528,6 +1221,7 @@ operations:
     audit: none
 - path: /v1/referral/referee_history
   method: get
+  operationId: getV1ReferralRefereeHistory
   x-agentic-access:
     action-class: connected
     consequence: read
@@ -1537,6 +1231,7 @@ operations:
     audit: none
 - path: /v1/referral/referee_info
   method: get
+  operationId: getV1ReferralRefereeInfo
   x-agentic-access:
     action-class: connected
     consequence: read
@@ -1546,6 +1241,7 @@ operations:
     audit: none
 - path: /v1/referral/referee_rebate_summary
   method: get
+  operationId: getV1ReferralRefereeRebateSummary
   x-agentic-access:
     action-class: connected
     consequence: read
@@ -1555,6 +1251,7 @@ operations:
     audit: none
 - path: /v1/referral/edit_split
   method: post
+  operationId: postV1ReferralEditSplit
   x-agentic-access:
     action-class: acting
     consequence: write
@@ -1570,6 +1267,7 @@ operations:
     audit: required
 - path: /v1/referral/auto_referral/update
   method: post
+  operationId: postV1ReferralAutoReferralUpdate
   x-agentic-access:
     action-class: acting
     consequence: write
@@ -1585,6 +1283,7 @@ operations:
     audit: required
 - path: /v1/referral/auto_referral/info
   method: get
+  operationId: getV1ReferralAutoReferralInfo
   x-agentic-access:
     action-class: connected
     consequence: read
@@ -1594,6 +1293,7 @@ operations:
     audit: none
 - path: /v1/referral/auto_referral/progress
   method: get
+  operationId: getV1ReferralAutoReferralProgress
   x-agentic-access:
     action-class: connected
     consequence: read
@@ -1603,6 +1303,7 @@ operations:
     audit: none
 - path: /v1/referral/edit_referral_code
   method: post
+  operationId: postV1ReferralEditReferralCode
   x-agentic-access:
     action-class: acting
     consequence: write
@@ -1618,6 +1319,7 @@ operations:
     audit: required
 - path: /v1/referral/multi_level/max_rebate_rate
   method: get
+  operationId: getV1ReferralMultiLevelMaxRebateRate
   x-agentic-access:
     action-class: connected
     consequence: read
@@ -1627,6 +1329,7 @@ operations:
     audit: none
 - path: /v1/referral/multi_level/claim_code
   method: post
+  operationId: postV1ReferralMultiLevelClaimCode
   x-agentic-access:
     action-class: acting
     consequence: write
@@ -1642,6 +1345,7 @@ operations:
     audit: required
 - path: /v1/referral/multi_level/rebate_info
   method: get
+  operationId: getV1ReferralMultiLevelRebateInfo
   x-agentic-access:
     action-class: connected
     consequence: read
@@ -1651,6 +1355,7 @@ operations:
     audit: none
 - path: /v1/referral/multi_level/rebate_rate/update
   method: post
+  operationId: postV1ReferralMultiLevelRebateRateUpdate
   x-agentic-access:
     action-class: acting
     consequence: write
@@ -1666,6 +1371,7 @@ operations:
     audit: required
 - path: /v1/referral/multi_level/rebate_rate/set_default
   method: post
+  operationId: postV1ReferralMultiLevelRebateRateSetDefault
   x-agentic-access:
     action-class: acting
     consequence: safety-critical
@@ -1681,6 +1387,7 @@ operations:
     audit: required
 - path: /v1/referral/multi_level/statistics
   method: get
+  operationId: getV1ReferralMultiLevelStatistics
   x-agentic-access:
     action-class: connected
     consequence: read
@@ -1690,6 +1397,7 @@ operations:
     audit: none
 - path: /v1/referral/multi_level/referee_list
   method: get
+  operationId: getV1ReferralMultiLevelRefereeList
   x-agentic-access:
     action-class: connected
     consequence: read
@@ -1699,6 +1407,7 @@ operations:
     audit: none
 - path: /v1/referral/multi_level/volume_prerequisite
   method: get
+  operationId: getV1ReferralMultiLevelVolumePrerequisite
   x-agentic-access:
     action-class: connected
     consequence: read
@@ -1708,6 +1417,7 @@ operations:
     audit: none
 - path: /v1/referral/multi_level/admin
   method: post
+  operationId: postV1ReferralMultiLevelAdmin
   x-agentic-access:
     action-class: acting
     consequence: write
@@ -1723,6 +1433,7 @@ operations:
     audit: required
 - path: /v1/referral/multi_level/admin
   method: get
+  operationId: getV1ReferralMultiLevelAdmin
   x-agentic-access:
     action-class: connected
     consequence: read
@@ -1732,6 +1443,7 @@ operations:
     audit: none
 - path: /v1/referral/multi_level/admin/update
   method: post
+  operationId: postV1ReferralMultiLevelAdminUpdate
   x-agentic-access:
     action-class: acting
     consequence: write
@@ -1747,6 +1459,7 @@ operations:
     audit: required
 - path: /v1/referral/multi_level/admin/update/affiliate
   method: post
+  operationId: postV1ReferralMultiLevelAdminUpdateAffiliate
   x-agentic-access:
     action-class: acting
     consequence: write
@@ -1762,6 +1475,7 @@ operations:
     audit: required
 - path: /v1/referral/multi_level/admin/reset/affiliate
   method: post
+  operationId: postV1ReferralMultiLevelAdminResetAffiliate
   x-agentic-access:
     action-class: acting
     consequence: safety-critical
@@ -1777,6 +1491,7 @@ operations:
     audit: required
 - path: /v1/referral/multi_level/admin/info
   method: get
+  operationId: getV1ReferralMultiLevelAdminInfo
   x-agentic-access:
     action-class: connected
     consequence: read
@@ -1786,6 +1501,7 @@ operations:
     audit: none
 - path: /v1/referral/multi_level/admin/referee_list
   method: get
+  operationId: getV1ReferralMultiLevelAdminRefereeList
   x-agentic-access:
     action-class: connected
     consequence: read
@@ -1795,6 +1511,7 @@ operations:
     audit: none
 - path: /v1/referral/multi_level/admin/summary
   method: get
+  operationId: getV1ReferralMultiLevelAdminSummary
   x-agentic-access:
     action-class: connected
     consequence: read
@@ -1804,93 +1521,7 @@ operations:
     audit: none
 - path: /v1/referral/multi_level/admin/create/affiliate
   method: post
-  x-agentic-access:
-    action-class: acting
-    consequence: write
-    subject: required
-    audience: null
-    token:
-      max-ttl: 900
-    escalation:
-      human-in-the-loop: conditional
-      triggers:
-      - abnormal
-      - high-value
-    audit: required
-- path: /v1/public/points/leaderboard
-  method: get
-  x-agentic-access:
-    action-class: connected
-    consequence: read
-    subject: optional
-    token:
-      max-ttl: 3600
-    audit: none
-- path: /v1/client/points
-  method: get
-  x-agentic-access:
-    action-class: connected
-    consequence: read
-    subject: optional
-    token:
-      max-ttl: 3600
-    audit: none
-- path: /v1/client/points/user_statistics
-  method: get
-  x-agentic-access:
-    action-class: connected
-    consequence: read
-    subject: optional
-    token:
-      max-ttl: 3600
-    audit: none
-- path: /v1/public/points/epoch_dates
-  method: get
-  x-agentic-access:
-    action-class: connected
-    consequence: read
-    subject: optional
-    token:
-      max-ttl: 3600
-    audit: none
-- path: /v1/public/points/rankings
-  method: get
-  x-agentic-access:
-    action-class: connected
-    consequence: read
-    subject: optional
-    token:
-      max-ttl: 3600
-    audit: none
-- path: /v1/public/points/epoch
-  method: get
-  x-agentic-access:
-    action-class: connected
-    consequence: read
-    subject: optional
-    token:
-      max-ttl: 3600
-    audit: none
-- path: /v1/public/points/stages
-  method: get
-  x-agentic-access:
-    action-class: connected
-    consequence: read
-    subject: optional
-    token:
-      max-ttl: 3600
-    audit: none
-- path: /v1/admin/points/stage
-  method: get
-  x-agentic-access:
-    action-class: connected
-    consequence: read
-    subject: optional
-    token:
-      max-ttl: 3600
-    audit: none
-- path: /v1/admin/points/stage
-  method: post
+  operationId: postV1ReferralMultiLevelAdminCreateAffiliate
   x-agentic-access:
     action-class: acting
     consequence: write
@@ -1905,7 +1536,18 @@ operations:
       - high-value
     audit: required
 - path: /v1/admin/points/stage
-  method: delete
+  method: get
+  operationId: getV1AdminPointsStage
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /v1/admin/points/stage
+  method: post
+  operationId: postV1AdminPointsStage
   x-agentic-access:
     action-class: acting
     consequence: write
@@ -1913,38 +1555,6 @@ operations:
     audience: null
     token:
       max-ttl: 900
-    escalation:
-      human-in-the-loop: conditional
-      triggers:
-      - abnormal
-      - high-value
-    audit: required
-- path: /v1/delegate_signer
-  method: post
-  x-agentic-access:
-    action-class: acting
-    consequence: write
-    subject: required
-    audience: null
-    token:
-      max-ttl: 900
-    escalation:
-      human-in-the-loop: conditional
-      triggers:
-      - abnormal
-      - high-value
-    audit: required
-- path: /v1/delegate_orderly_key
-  method: post
-  x-agentic-access:
-    action-class: acting
-    consequence: physical
-    subject: required
-    audience: null
-    token:
-      max-ttl: 300
-      exchange: true
-      purpose-required: true
     escalation:
       human-in-the-loop: conditional
       triggers:
@@ -1953,6 +1563,7 @@ operations:
     audit: required
 - path: /v1/delegate_withdraw_request
   method: post
+  operationId: postV1DelegateWithdrawRequest
   x-agentic-access:
     action-class: acting
     consequence: physical
@@ -1970,6 +1581,7 @@ operations:
     audit: required
 - path: /v1/delegate_settle_pnl
   method: post
+  operationId: postV1DelegateSettlePnl
   x-agentic-access:
     action-class: acting
     consequence: write
@@ -1985,6 +1597,7 @@ operations:
     audit: required
 - path: /v1/client/distribution_history
   method: get
+  operationId: getV1ClientDistributionHistory
   x-agentic-access:
     action-class: connected
     consequence: read
@@ -1994,6 +1607,7 @@ operations:
     audit: none
 - path: /v1/client/campaign/sign_up
   method: post
+  operationId: postV1ClientCampaignSignUp
   x-agentic-access:
     action-class: acting
     consequence: write
@@ -2007,62 +1621,9 @@ operations:
       - abnormal
       - high-value
     audit: required
-- path: /v1/public/campaigns
-  method: get
-  x-agentic-access:
-    action-class: connected
-    consequence: read
-    subject: optional
-    token:
-      max-ttl: 3600
-    audit: none
-- path: /v1/public/campaign/stats
-  method: get
-  x-agentic-access:
-    action-class: connected
-    consequence: read
-    subject: optional
-    token:
-      max-ttl: 3600
-    audit: none
-- path: /v1/public/campaign/stats/details
-  method: get
-  x-agentic-access:
-    action-class: connected
-    consequence: read
-    subject: optional
-    token:
-      max-ttl: 3600
-    audit: none
-- path: /v1/public/campaign/ranking
-  method: get
-  x-agentic-access:
-    action-class: connected
-    consequence: read
-    subject: optional
-    token:
-      max-ttl: 3600
-    audit: none
-- path: /v1/public/campaign/user
-  method: get
-  x-agentic-access:
-    action-class: connected
-    consequence: read
-    subject: optional
-    token:
-      max-ttl: 3600
-    audit: none
-- path: /v1/public/campaign/check
-  method: get
-  x-agentic-access:
-    action-class: connected
-    consequence: read
-    subject: optional
-    token:
-      max-ttl: 3600
-    audit: none
 - path: /v1/staking/balance
   method: get
+  operationId: getV1StakingBalance
   x-agentic-access:
     action-class: connected
     consequence: read
@@ -2072,51 +1633,7 @@ operations:
     audit: none
 - path: /v1/staking/unstake_details
   method: get
-  x-agentic-access:
-    action-class: connected
-    consequence: read
-    subject: optional
-    token:
-      max-ttl: 3600
-    audit: none
-- path: /v1/staking/overview
-  method: get
-  x-agentic-access:
-    action-class: connected
-    consequence: read
-    subject: optional
-    token:
-      max-ttl: 3600
-    audit: none
-- path: /v1/staking/valor/batch_info
-  method: get
-  x-agentic-access:
-    action-class: connected
-    consequence: read
-    subject: optional
-    token:
-      max-ttl: 3600
-    audit: none
-- path: /v1/staking/valor/pool_info
-  method: get
-  x-agentic-access:
-    action-class: connected
-    consequence: read
-    subject: optional
-    token:
-      max-ttl: 3600
-    audit: none
-- path: /v1/staking/valor2/pool_info
-  method: get
-  x-agentic-access:
-    action-class: connected
-    consequence: read
-    subject: optional
-    token:
-      max-ttl: 3600
-    audit: none
-- path: /v1/staking/valor2/batch_info
-  method: get
+  operationId: getV1StakingUnstakeDetails
   x-agentic-access:
     action-class: connected
     consequence: read
@@ -2126,15 +1643,7 @@ operations:
     audit: none
 - path: /v1/staking/valor2/redeem
   method: get
-  x-agentic-access:
-    action-class: connected
-    consequence: read
-    subject: optional
-    token:
-      max-ttl: 3600
-    audit: none
-- path: /v1/staking/valor2/revenue_buyback
-  method: get
+  operationId: getV1StakingValor2Redeem
   x-agentic-access:
     action-class: connected
     consequence: read
@@ -2144,6 +1653,7 @@ operations:
     audit: none
 - path: /v1/staking/valor/redeem
   method: get
+  operationId: getV1StakingValorRedeem
   x-agentic-access:
     action-class: connected
     consequence: read
@@ -2153,6 +1663,7 @@ operations:
     audit: none
 - path: /v1/staking/esorder/vesting_list
   method: get
+  operationId: getV1StakingEsorderVestingList
   x-agentic-access:
     action-class: connected
     consequence: read
@@ -2160,43 +1671,9 @@ operations:
     token:
       max-ttl: 3600
     audit: none
-- path: /v1/public/sv_nonce
-  method: get
-  x-agentic-access:
-    action-class: connected
-    consequence: read
-    subject: optional
-    token:
-      max-ttl: 3600
-    audit: none
-- path: /v1/account_sv_transaction_history
-  method: get
-  x-agentic-access:
-    action-class: connected
-    consequence: read
-    subject: optional
-    token:
-      max-ttl: 3600
-    audit: none
-- path: /v1/sv_operation_request
-  method: post
-  x-agentic-access:
-    action-class: acting
-    consequence: physical
-    subject: required
-    audience: null
-    token:
-      max-ttl: 300
-      exchange: true
-      purpose-required: true
-    escalation:
-      human-in-the-loop: conditional
-      triggers:
-      - abnormal
-      - high-value
-    audit: required
 - path: /v1/sv/sp_orderly_key
   method: post
+  operationId: postV1SvSpOrderlyKey
   x-agentic-access:
     action-class: acting
     consequence: physical
@@ -2214,6 +1691,7 @@ operations:
     audit: required
 - path: /v1/sv/sp_settle_pnl
   method: post
+  operationId: postV1SvSpSettlePnl
   x-agentic-access:
     action-class: acting
     consequence: write
@@ -2229,6 +1707,7 @@ operations:
     audit: required
 - path: /v1/sv/manual_period_delivery
   method: post
+  operationId: postV1SvManualPeriodDelivery
   x-agentic-access:
     action-class: acting
     consequence: write
@@ -2242,53 +1721,9 @@ operations:
       - abnormal
       - high-value
     audit: required
-- path: /v1/sv/venue_transfer_history
-  method: get
-  x-agentic-access:
-    action-class: connected
-    consequence: read
-    subject: optional
-    token:
-      max-ttl: 3600
-    audit: none
-- path: /v1/sv/venue_withdrawal_history
-  method: get
-  x-agentic-access:
-    action-class: connected
-    consequence: read
-    subject: optional
-    token:
-      max-ttl: 3600
-    audit: none
-- path: /v1/sv/protocol_revenue_share_history
-  method: get
-  x-agentic-access:
-    action-class: connected
-    consequence: read
-    subject: optional
-    token:
-      max-ttl: 3600
-    audit: none
-- path: /v1/sv/liquidation_fees_share_history
-  method: get
-  x-agentic-access:
-    action-class: connected
-    consequence: read
-    subject: optional
-    token:
-      max-ttl: 3600
-    audit: none
-- path: /v1/sv/internal_transfer_history
-  method: get
-  x-agentic-access:
-    action-class: connected
-    consequence: read
-    subject: optional
-    token:
-      max-ttl: 3600
-    audit: none
 - path: /v1/admin/client/info
   method: get
+  operationId: getV1AdminClientInfo
   x-agentic-access:
     action-class: connected
     consequence: read
@@ -2298,6 +1733,7 @@ operations:
     audit: none
 - path: /v1/admin/client/holding
   method: get
+  operationId: getV1AdminClientHolding
   x-agentic-access:
     action-class: connected
     consequence: read
@@ -2307,6 +1743,7 @@ operations:
     audit: none
 - path: /v1/admin/internal_transfer_history
   method: get
+  operationId: getV1AdminInternalTransferHistory
   x-agentic-access:
     action-class: connected
     consequence: read
@@ -2316,6 +1753,7 @@ operations:
     audit: none
 - path: /v1/admin/asset/history
   method: get
+  operationId: getV1AdminAssetHistory
   x-agentic-access:
     action-class: connected
     consequence: read
@@ -2325,6 +1763,7 @@ operations:
     audit: none
 - path: /v1/admin/client/leverage
   method: get
+  operationId: getV1AdminClientLeverage
   x-agentic-access:
     action-class: connected
     consequence: read
@@ -2334,6 +1773,7 @@ operations:
     audit: none
 - path: /v1/admin/orders
   method: get
+  operationId: getV1AdminOrders
   x-agentic-access:
     action-class: connected
     consequence: read
@@ -2343,6 +1783,7 @@ operations:
     audit: none
 - path: /v1/admin/position/{symbol}
   method: get
+  operationId: getV1AdminPositionBySymbol
   x-agentic-access:
     action-class: connected
     consequence: read
@@ -2352,6 +1793,7 @@ operations:
     audit: none
 - path: /v1/admin/positions
   method: get
+  operationId: getV1AdminPositions
   x-agentic-access:
     action-class: connected
     consequence: read
@@ -2361,6 +1803,7 @@ operations:
     audit: none
 - path: /v1/admin/funding_fee/history
   method: get
+  operationId: getV1AdminFundingFeeHistory
   x-agentic-access:
     action-class: connected
     consequence: read
@@ -2370,6 +1813,7 @@ operations:
     audit: none
 - path: /v1/admin/volume/user/stats
   method: get
+  operationId: getV1AdminVolumeUserStats
   x-agentic-access:
     action-class: connected
     consequence: read
@@ -2379,6 +1823,7 @@ operations:
     audit: none
 - path: /v1/admin/liquidations
   method: get
+  operationId: getV1AdminLiquidations
   x-agentic-access:
     action-class: connected
     consequence: read
@@ -2388,6 +1833,7 @@ operations:
     audit: none
 - path: /v1/admin/algo/orders
   method: get
+  operationId: getV1AdminAlgoOrders
   x-agentic-access:
     action-class: connected
     consequence: read
@@ -2397,15 +1843,7 @@ operations:
     audit: none
 - path: /v1/admin/trades
   method: get
-  x-agentic-access:
-    action-class: connected
-    consequence: read
-    subject: optional
-    token:
-      max-ttl: 3600
-    audit: none
-- path: /v1/public/broker/order_enums
-  method: get
+  operationId: getV1AdminTrades
   x-agentic-access:
     action-class: connected
     consequence: read
@@ -2415,6 +1853,7 @@ operations:
     audit: none
 - path: /v1/broker/order_enum
   method: post
+  operationId: postV1BrokerOrderEnum
   x-agentic-access:
     action-class: acting
     consequence: physical
@@ -2432,6 +1871,7 @@ operations:
     audit: required
 - path: /v1/broker/order_enum/{enum_id}
   method: put
+  operationId: putV1BrokerOrderEnumByEnumId
   x-agentic-access:
     action-class: acting
     consequence: physical
@@ -2449,6 +1889,7 @@ operations:
     audit: required
 - path: /v1/broker/order_enum/{enum_id}
   method: get
+  operationId: getV1BrokerOrderEnumByEnumId
   x-agentic-access:
     action-class: connected
     consequence: read
@@ -2458,6 +1899,7 @@ operations:
     audit: none
 - path: /v1/broker/order_enums
   method: get
+  operationId: getV1BrokerOrderEnums
   x-agentic-access:
     action-class: connected
     consequence: read
@@ -2467,6 +1909,7 @@ operations:
     audit: none
 - path: /v1/broker/order_enum/archive
   method: post
+  operationId: postV1BrokerOrderEnumArchive
   x-agentic-access:
     action-class: acting
     consequence: physical
@@ -2484,6 +1927,7 @@ operations:
     audit: required
 - path: /v1/broker/order_enum/unarchive
   method: post
+  operationId: postV1BrokerOrderEnumUnarchive
   x-agentic-access:
     action-class: acting
     consequence: physical
@@ -2499,8 +1943,785 @@ operations:
       - abnormal
       - high-value
     audit: required
+- path: /v1/public/futures
+  method: get
+  operationId: getV1PublicFutures
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /v1/ip_info
+  method: get
+  operationId: getV1IpInfo
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /v1/public/futures_market
+  method: get
+  operationId: getV1PublicFuturesMarket
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /v1/public/balance/stats
+  method: get
+  operationId: getV1PublicBalanceStats
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /v1/public/market_trades
+  method: get
+  operationId: getV1PublicMarketTrades
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /v1/public/market_info/price_changes
+  method: get
+  operationId: getV1PublicMarketInfoPriceChanges
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /v1/public/market_info/traders_open_interests
+  method: get
+  operationId: getV1PublicMarketInfoTradersOpenInterests
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /v1/public/market_info/history_charts
+  method: get
+  operationId: getV1PublicMarketInfoHistoryCharts
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /v1/public/market_info/funding_history
+  method: get
+  operationId: getV1PublicMarketInfoFundingHistory
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /v1/public/volume/stats
+  method: get
+  operationId: getV1PublicVolumeStats
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /v1/public/broker/stats
+  method: get
+  operationId: getV1PublicBrokerStats
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /v1/public/broker/name
+  method: get
+  operationId: getV1PublicBrokerName
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /v1/public/funding_rates
+  method: get
+  operationId: getV1PublicFundingRates
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /v1/public/funding_rate/{symbol}
+  method: get
+  operationId: getV1PublicFundingRateBySymbol
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /v1/public/funding_rate_history
+  method: get
+  operationId: getV1PublicFundingRateHistory
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /v1/public/futures/{symbol}
+  method: get
+  operationId: getV1PublicFuturesBySymbol
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /v1/public/liquidation
+  method: get
+  operationId: getV1PublicLiquidation
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /v1/public/liquidated_positions
+  method: get
+  operationId: getV1PublicLiquidatedPositions
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /v1/public/info/{symbol}
+  method: get
+  operationId: getV1PublicInfoBySymbol
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /v1/public/token
+  method: get
+  operationId: getV1PublicToken
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /v1/public/info
+  method: get
+  operationId: getV1PublicInfo
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /v1/public/index_price_source
+  method: get
+  operationId: getV1PublicIndexPriceSource
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /v1/public/insurancefund
+  method: get
+  operationId: getV1PublicInsurancefund
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /v1/tv/config
+  method: get
+  operationId: getV1TvConfig
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /v1/tv/history
+  method: get
+  operationId: getV1TvHistory
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /v1/tv/symbol_info
+  method: get
+  operationId: getV1TvSymbolInfo
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /v1/public/leverage
+  method: get
+  operationId: getV1PublicLeverage
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /v1/public/system_info
+  method: get
+  operationId: getV1PublicSystemInfo
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /v1/registration_nonce
+  method: get
+  operationId: getV1RegistrationNonce
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /v1/get_account
+  method: get
+  operationId: getV1GetAccount
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /v1/get_all_accounts
+  method: get
+  operationId: getV1GetAllAccounts
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /v1/get_broker
+  method: get
+  operationId: getV1GetBroker
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /v1/register_account
+  method: post
+  operationId: postV1RegisterAccount
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /v1/get_orderly_key
+  method: get
+  operationId: getV1GetOrderlyKey
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /v1/orderly_key
+  method: post
+  operationId: postV1OrderlyKey
+  x-agentic-access:
+    action-class: acting
+    consequence: physical
+    subject: required
+    audience: null
+    token:
+      max-ttl: 300
+      exchange: true
+      purpose-required: true
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /v1/public/config
+  method: get
+  operationId: getV1PublicConfig
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /v1/public/chain_info
+  method: get
+  operationId: getV1PublicChainInfo
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /v1/kline
+  method: get
+  operationId: getV1Kline
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /v1/tv/kline_history
+  method: get
+  operationId: getV1TvKlineHistory
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /v1/public/vault_balance
+  method: get
+  operationId: getV1PublicVaultBalance
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /v1/faucet/usdc
+  method: post
+  operationId: postV1FaucetUsdc
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /v1/public/account
+  method: get
+  operationId: getV1PublicAccount
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /v1/public/announcement
+  method: get
+  operationId: getV1PublicAnnouncement
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /v1/public/referral/check_ref_code
+  method: get
+  operationId: getV1PublicReferralCheckRefCode
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /v1/public/referral/verify_ref_code
+  method: get
+  operationId: getV1PublicReferralVerifyRefCode
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /v1/public/points/leaderboard
+  method: get
+  operationId: getV1PublicPointsLeaderboard
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /v1/client/points
+  method: get
+  operationId: getV1ClientPoints
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /v1/public/points/epoch_dates
+  method: get
+  operationId: getV1PublicPointsEpochDates
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /v1/public/points/rankings
+  method: get
+  operationId: getV1PublicPointsRankings
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /v1/public/points/epoch
+  method: get
+  operationId: getV1PublicPointsEpoch
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /v1/public/points/stages
+  method: get
+  operationId: getV1PublicPointsStages
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /v1/delegate_signer
+  method: post
+  operationId: postV1DelegateSigner
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /v1/delegate_orderly_key
+  method: post
+  operationId: postV1DelegateOrderlyKey
+  x-agentic-access:
+    action-class: acting
+    consequence: physical
+    subject: required
+    audience: null
+    token:
+      max-ttl: 300
+      exchange: true
+      purpose-required: true
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /v1/public/campaigns
+  method: get
+  operationId: getV1PublicCampaigns
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /v1/public/campaign/stats
+  method: get
+  operationId: getV1PublicCampaignStats
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /v1/public/campaign/stats/details
+  method: get
+  operationId: getV1PublicCampaignStatsDetails
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /v1/public/campaign/ranking
+  method: get
+  operationId: getV1PublicCampaignRanking
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /v1/public/campaign/user
+  method: get
+  operationId: getV1PublicCampaignUser
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /v1/public/campaign/check
+  method: get
+  operationId: getV1PublicCampaignCheck
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /v1/staking/overview
+  method: get
+  operationId: getV1StakingOverview
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /v1/staking/valor/batch_info
+  method: get
+  operationId: getV1StakingValorBatchInfo
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /v1/staking/valor/pool_info
+  method: get
+  operationId: getV1StakingValorPoolInfo
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /v1/staking/valor2/pool_info
+  method: get
+  operationId: getV1StakingValor2PoolInfo
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /v1/staking/valor2/batch_info
+  method: get
+  operationId: getV1StakingValor2BatchInfo
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /v1/staking/valor2/revenue_buyback
+  method: get
+  operationId: getV1StakingValor2RevenueBuyback
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /v1/public/sv_nonce
+  method: get
+  operationId: getV1PublicSvNonce
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /v1/account_sv_transaction_history
+  method: get
+  operationId: getV1AccountSvTransactionHistory
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /v1/sv_operation_request
+  method: post
+  operationId: postV1SvOperationRequest
+  x-agentic-access:
+    action-class: acting
+    consequence: physical
+    subject: required
+    audience: null
+    token:
+      max-ttl: 300
+      exchange: true
+      purpose-required: true
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /v1/sv/venue_transfer_history
+  method: get
+  operationId: getV1SvVenueTransferHistory
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /v1/sv/venue_withdrawal_history
+  method: get
+  operationId: getV1SvVenueWithdrawalHistory
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /v1/sv/protocol_revenue_share_history
+  method: get
+  operationId: getV1SvProtocolRevenueShareHistory
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /v1/sv/liquidation_fees_share_history
+  method: get
+  operationId: getV1SvLiquidationFeesShareHistory
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /v1/sv/internal_transfer_history
+  method: get
+  operationId: getV1SvInternalTransferHistory
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /v1/public/broker/order_enums
+  method: get
+  operationId: getV1PublicBrokerOrderEnums
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
 - path: /v1/public/strategy_vault/sp/info
   method: get
+  operationId: getV1PublicStrategyVaultSpInfo
   x-agentic-access:
     action-class: connected
     consequence: read
@@ -2510,6 +2731,7 @@ operations:
     audit: none
 - path: /v1/public/strategy_vault/sp/transaction_history
   method: get
+  operationId: getV1PublicStrategyVaultSpTransactionHistory
   x-agentic-access:
     action-class: connected
     consequence: read
@@ -2519,6 +2741,7 @@ operations:
     audit: none
 - path: /v1/public/strategy_vault/sp/claim_info
   method: get
+  operationId: getV1PublicStrategyVaultSpClaimInfo
   x-agentic-access:
     action-class: connected
     consequence: read
@@ -2528,6 +2751,7 @@ operations:
     audit: none
 - path: /v1/public/strategy_vault/sp/fees_history
   method: get
+  operationId: getV1PublicStrategyVaultSpFeesHistory
   x-agentic-access:
     action-class: connected
     consequence: read
@@ -2537,6 +2761,7 @@ operations:
     audit: none
 - path: /v1/public/strategy_vault/fund/info
   method: get
+  operationId: getV1PublicStrategyVaultFundInfo
   x-agentic-access:
     action-class: connected
     consequence: read
@@ -2546,6 +2771,7 @@ operations:
     audit: none
 - path: /v1/public/strategy_vault/fund/period_info
   method: get
+  operationId: getV1PublicStrategyVaultFundPeriodInfo
   x-agentic-access:
     action-class: connected
     consequence: read
@@ -2555,6 +2781,7 @@ operations:
     audit: none
 - path: /v1/public/strategy_vault/fund/pending_transactions
   method: get
+  operationId: getV1PublicStrategyVaultFundPendingTransactions
   x-agentic-access:
     action-class: connected
     consequence: read
@@ -2564,6 +2791,7 @@ operations:
     audit: none
 - path: /v1/public/strategy_vault/vault/info
   method: get
+  operationId: getV1PublicStrategyVaultVaultInfo
   x-agentic-access:
     action-class: connected
     consequence: read
@@ -2573,6 +2801,7 @@ operations:
     audit: none
 - path: /v1/public/strategy_vault/vault/performance
   method: get
+  operationId: getV1PublicStrategyVaultVaultPerformance
   x-agentic-access:
     action-class: connected
     consequence: read
@@ -2582,6 +2811,7 @@ operations:
     audit: none
 - path: /v1/public/strategy_vault/vault/performance_chart
   method: get
+  operationId: getV1PublicStrategyVaultVaultPerformanceChart
   x-agentic-access:
     action-class: connected
     consequence: read
@@ -2591,6 +2821,7 @@ operations:
     audit: none
 - path: /v1/public/strategy_vault/vault/overall_info
   method: get
+  operationId: getV1PublicStrategyVaultVaultOverallInfo
   x-agentic-access:
     action-class: connected
     consequence: read
@@ -2600,6 +2831,7 @@ operations:
     audit: none
 - path: /v1/public/strategy_vault/user/overall_info
   method: get
+  operationId: getV1PublicStrategyVaultUserOverallInfo
   x-agentic-access:
     action-class: connected
     consequence: read
@@ -2609,6 +2841,7 @@ operations:
     audit: none
 - path: /v1/public/strategy_vault/vault/liquidator_history
   method: get
+  operationId: getV1PublicStrategyVaultVaultLiquidatorHistory
   x-agentic-access:
     action-class: connected
     consequence: read
@@ -2618,6 +2851,7 @@ operations:
     audit: none
 - path: /v1/public/strategy_vault/vault/positions
   method: get
+  operationId: getV1PublicStrategyVaultVaultPositions
   x-agentic-access:
     action-class: connected
     consequence: read
@@ -2627,6 +2861,7 @@ operations:
     audit: none
 - path: /v1/public/strategy_vault/vault/open_orders
   method: get
+  operationId: getV1PublicStrategyVaultVaultOpenOrders
   x-agentic-access:
     action-class: connected
     consequence: read
@@ -2636,6 +2871,7 @@ operations:
     audit: none
 - path: /v1/public/strategy_vault/vault/trade_history
   method: get
+  operationId: getV1PublicStrategyVaultVaultTradeHistory
   x-agentic-access:
     action-class: connected
     consequence: read
@@ -2645,6 +2881,7 @@ operations:
     audit: none
 - path: /v1/public/strategy_vault/vault/order_history
   method: get
+  operationId: getV1PublicStrategyVaultVaultOrderHistory
   x-agentic-access:
     action-class: connected
     consequence: read
@@ -2654,6 +2891,7 @@ operations:
     audit: none
 - path: /v1/public/strategy_vault/lp/info
   method: get
+  operationId: getV1PublicStrategyVaultLpInfo
   x-agentic-access:
     action-class: connected
     consequence: read
@@ -2663,6 +2901,7 @@ operations:
     audit: none
 - path: /v1/public/strategy_vault/lp/fees_history
   method: get
+  operationId: getV1PublicStrategyVaultLpFeesHistory
   x-agentic-access:
     action-class: connected
     consequence: read
@@ -2672,6 +2911,7 @@ operations:
     audit: none
 - path: /v1/public/strategy_vault/lp/performance
   method: get
+  operationId: getV1PublicStrategyVaultLpPerformance
   x-agentic-access:
     action-class: connected
     consequence: read
@@ -2681,6 +2921,7 @@ operations:
     audit: none
 - path: /v1/public/strategy_vault/lp/performance_chart
   method: get
+  operationId: getV1PublicStrategyVaultLpPerformanceChart
   x-agentic-access:
     action-class: connected
     consequence: read
@@ -2690,6 +2931,7 @@ operations:
     audit: none
 - path: /v1/public/strategy_vault/lp/transaction_history
   method: get
+  operationId: getV1PublicStrategyVaultLpTransactionHistory
   x-agentic-access:
     action-class: connected
     consequence: read
@@ -2699,6 +2941,7 @@ operations:
     audit: none
 - path: /v1/public/strategy_vault/lp/claim_info
   method: get
+  operationId: getV1PublicStrategyVaultLpClaimInfo
   x-agentic-access:
     action-class: connected
     consequence: read
