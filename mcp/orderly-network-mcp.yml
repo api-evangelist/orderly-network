@@ -19,25 +19,27 @@ server:
   - opencode
 tools:
 - name: search_orderly_docs
-  description: Search the Orderly documentation.
-- name: get_sdk_pattern
-  description: Retrieve SDK v2 hooks and component examples.
+  description: Search Orderly Network documentation for specific topics, concepts, or questions
 - name: get_contract_addresses
-  description: Look up smart-contract addresses per chain.
+  description: Get smart contract addresses for Orderly on specific chains
 - name: explain_workflow
-  description: Step-by-step development guides.
+  description: Get step-by-step explanation of common Orderly development workflows
 - name: get_api_info
-  description: REST / WebSocket endpoint documentation.
+  description: Get information about Orderly REST API endpoints or WebSocket streams
 - name: get_indexer_api_info
-  description: Trading metrics and account events (indexer API).
+  description: Get information about Orderly Indexer API for trading metrics, account events, trades,
+    and volume statistics (rankings endpoints available via endpoint search)
 - name: get_component_guide
-  description: React component building guidance.
+  description: Get guidance on building React UI components using Orderly SDK
 - name: get_orderly_one_api_info
-  description: DEX creation and management API (Orderly One).
+  description: Get information about Orderly One API for DEX creation, graduation, and management
 - name: get_strategy_vault_api_info
-  description: Strategy Vault API reference.
+  description: Get information about Orderly Strategy Vault API for yield optimization, strategy providers,
+    and liquidity providers
 - name: get_public_info_api_info
-  description: Zero-auth Public Info API for AI agents and analytics.
+  description: Get information about the Orderly Public Info API — a zero-auth single endpoint (POST /v1/public/query)
+    for market, account, and platform data via a `type` field. Covers 24 query types (marketSummary, accountState,
+    orderbook, candles, topAddresses, etc.)
 deployment:
   mode: remote
   endpoint: https://mcp.orderly.network
@@ -70,3 +72,4 @@ tool_quality:
   scored: false
   note: Facts from the saved tools/list capture (mcp_tool_quality.py); recorded, not scored. Checks learned
     from Glimind's agent-readiness audit.
+tools_count: 9
