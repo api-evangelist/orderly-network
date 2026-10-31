@@ -64,6 +64,143 @@
 > Full detail: **[Where this data comes from](https://apievangelist.com/about/where-our-data-comes-from)**
 <!-- API-EVANGELIST-PROVENANCE:END -->
 
-Orderly Network is a company surfaced as a portfolio company of pantera-capital and added to the API Evangelist network as a stub for enrichment. Sector: crypto. This profile is a lead awaiting the enrichment pipeline.
+Orderly Network is an omnichain, orderbook-based trading infrastructure that provides perpetual-futures liquidity for decentralized exchanges and builders. It exposes a full EVM REST API and WebSocket streams for order management, account and sub-account handling, cross-chain deposits/withdrawals, positions, settlement, and market data, plus a Strategy Vault API and a zero-auth Public Info API aimed at AI agents and analytics. Authentication uses ed25519 request signing with registered Orderly Keys. Builders integrate via React component and hooks SDKs, a devkit CLI, a Builders Marketplace plugin system, and an official MCP server. Markets use the PERP_<TOKEN>_USDC symbol format across a public mainnet and testnet.
 
-Backed by: pantera-capital — https://orderly.network/
+**Areas:** Company · Cryptocurrency · DeFi · Trading · Perpetual Futures · Derivatives · Order Book · Web3 · Blockchain · Liquidity · Real-Time
+
+## Orderly Network on APIs.io
+
+Everything profiled for Orderly Network is published on APIs.io rather than in this repository. Start at the provider page — **[apis.io/providers/orderly-network/](https://apis.io/providers/orderly-network/)** — or go straight to one of the APIs or properties below.
+
+### APIs (4)
+
+- [Orderly Network Admin API](https://apis.io/apis/orderly-network/orderly-network-admin-api/) — The admin API from Orderly Network — 1 operation(s) for admin.
+- [Orderly Network Client API](https://apis.io/apis/orderly-network/orderly-network-client-api/) — The client API from Orderly Network — 1 operation(s) for client.
+- [Orderly Network Private API](https://apis.io/apis/orderly-network/orderly-network-private-api/) — The private API from Orderly Network — 137 operation(s) for private.
+- [Orderly Network Public API](https://apis.io/apis/orderly-network/orderly-network-public-api/) — The public API from Orderly Network — 97 operation(s) for public.
+
+### Published properties
+
+Each property below is a page on APIs.io carrying the machine-readable artifact and what it says.
+
+#### AsyncAPI (1)
+
+Event-driven and webhook contracts.
+
+- [Orderly Network WebSocket API](https://apis.io/asyncapis/orderly-network/orderly-network-websocket-asyncapi/)
+
+#### Event channels (8)
+
+Individual events and webhooks the provider emits.
+
+- [account](https://apis.io/channels/orderly-network/account/)
+- [balance](https://apis.io/channels/orderly-network/balance/)
+- [executionreport](https://apis.io/channels/orderly-network/executionreport/)
+- [position](https://apis.io/channels/orderly-network/position/)
+- [{symbol}@kline_1m](https://apis.io/channels/orderly-network/symbol-kline-1m/)
+- [{symbol}@orderbook](https://apis.io/channels/orderly-network/symbol-orderbook/)
+- [{symbol}@ticker](https://apis.io/channels/orderly-network/symbol-ticker/)
+- [{symbol}@trade](https://apis.io/channels/orderly-network/symbol-trade/)
+
+#### MCP servers (1)
+
+Model Context Protocol servers that expose the API to agents.
+
+- [orderly](https://apis.io/servers/orderly-network/orderly/)
+
+#### Agentic access (1)
+
+Which operations an agent can call, which act, and which need a human in the loop.
+
+- [Orderly Network Agentic Access](https://apis.io/agentic-access/orderly-network/orderly-network-agentic-access/)
+
+#### Collections (4)
+
+Postman and Open Collection request collections.
+
+- [EVM admin API](https://apis.io/collections/orderly-network/open-orderly-network-admin-api/)
+- [EVM admin client API](https://apis.io/collections/orderly-network/open-orderly-network-client-api/)
+- [EVM admin private API](https://apis.io/collections/orderly-network/open-orderly-network-private-api/)
+- [EVM admin public API](https://apis.io/collections/orderly-network/open-orderly-network-public-api/)
+
+#### Overlays (1)
+
+OpenAPI overlays, including conversational phrasing for each operation.
+
+- [Orderly Network Evm Overlay](https://apis.io/overlays/orderly-network/orderly-network-evm-overlay/)
+
+#### Security (2)
+
+Authentication, trust centre, and vulnerability disclosure.
+
+- [Orderly Network Authentication](https://apis.io/security/orderly-network/orderly-network-authentication/)
+- [Orderly Network Domain Security](https://apis.io/security/orderly-network/orderly-network-domain-security/)
+
+## Where to find this API
+
+Links to the company's own pages. This repository publishes no copy of their specifications — the canonical document is theirs and lives at the URLs below.
+
+- [Website](https://orderly.network/)
+- [Documentation](https://orderly.network/docs/introduction/getting-started/what-is-orderly)
+- [Getting started](https://orderly.network/docs/introduction/getting-started/builder-onboarding)
+- [API reference](https://orderly.network/docs/build-on-omnichain/introduction)
+- [Support](https://discord.com/invite/OrderlyNetwork)
+- [Blog](https://orderly.network/blog)
+- [Terms of service](https://orderly.network/docs/introduction/terms-of-service)
+- [Privacy policy](https://orderly.network/docs/introduction/privacy-policy)
+- [GitHub](https://github.com/OrderlyNetwork)
+
+## API Evangelist rating
+
+**Kin Score 44.0** — developing · rubric 0.25.0 · scored 2026-10-23
+
+| Facet | Score |
+|---|---|
+| Discoverability | 75.0 |
+| Contract quality | 50.3 |
+| Contract governance | 4.5 |
+| Operational transparency | 26.3 |
+| Developer ergonomics | 80.4 |
+| Access clarity | 21.1 |
+
+**Agent readiness 35.3** — agent-ready
+
+| Agent-readiness dimension | Result |
+|---|---|
+| Spec Presence | yes |
+| Agentic Access | derived (partial credit) |
+| Reversibility Documented | documented (partial credit) |
+| MCP Server | verified |
+| Auth Clarity | bearer (partial credit) |
+| Idempotency | — |
+| Error Semantics | documented (partial credit) |
+| OpenAPI Examples | partial |
+| Rate Limit Signal | — |
+| Event Surface Described | derived (partial credit) |
+| Agent Skills | derived (partial credit) |
+| Well Known Catalog | — |
+| Consent Identity | — |
+| Agent Card | — |
+| Dry Run Mode | — |
+| Delegated Identity | — |
+| Protected Resource Metadata | — |
+| Dynamic Client Registration | — |
+| Agentic Commerce | — |
+| Pagination Ratio | na |
+| Operation Distinctiveness | mostly |
+
+**Regulatory alignment 23.1** — Securities & Market Data
+
+The rubric is published at [github.com/api-evangelist/kin-score](https://github.com/api-evangelist/kin-score). The per-check breakdown behind these numbers — which checks were earned, partial or missed — along with score history and how this provider compares to its peers, is available at [apis.io/providers/orderly-network/](https://apis.io/providers/orderly-network/).
+
+## How this profile is made
+
+API Evangelist profiles a company's public API surface the way a developer would find it: the website, developer portal and documentation, the specifications it publishes, its public repositories, and its pricing, status and changelog pages. From that it derives the properties above — contracts split per API, workflows, schemas, collections, governance rules, plans and rate limits — and scores them against the published [Kin Score rubric](https://github.com/api-evangelist/kin-score).
+
+The artifacts are published on [APIs.io](https://apis.io), not in this repository. This repository is the public record for Orderly Network: the place to say something is wrong, missing or out of date, and to ask for a re-score or a removal.
+
+## Open an issue
+
+- **Something about this listing** — a wrong description, a missing API, a stale artifact or a question about the rating: [open an issue on this repository](https://github.com/api-evangelist/orderly-network/issues/new).
+- **A new API, or one that is not in the catalog yet** — [submit it on APIs.io](https://apis.io/add/).
+- **Anything else** — [the APIs.io inbox](https://github.com/api-search/inbox/issues/new) or [info@apievangelist.com](mailto:info@apievangelist.com).
